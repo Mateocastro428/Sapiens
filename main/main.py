@@ -30,4 +30,3 @@ def obtener_usuario(nombre: str):
 @app.delete("/usuarios/{nombre}")
 def eliminar_usuario(nombre: str):
     return {"mensaje": f"Usuario {nombre} eliminado correctamente"}
-```
