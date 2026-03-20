@@ -1,11 +1,13 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
-from login.login import router as login_router
+from routers.usuarios import router as usuarios_router
+from routers.contenidos import router as contenidos_router
 
-app = FastAPI()
+app = FastAPI(title="Sapiens API")
 
-app.include_router(login_router)
+app.include_router(usuarios_router)
+app.include_router(contenidos_router)
 
 @app.get("/")
 def inicio():
-    return RedirectResponse(url="/registro")
+    return RedirectResponse(url="/docs")
