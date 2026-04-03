@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from models.contenido import Contenido
+from app.models.contenido import Contenido
 from typing import List, Optional
 
 router = APIRouter(prefix="/contenidos", tags=["Contenidos"])

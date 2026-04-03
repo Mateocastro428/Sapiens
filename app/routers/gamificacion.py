@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from models.gamificacion import Logro, Nivel
+from app.models.gamificacion import Logro, Nivel
 
 router = APIRouter(prefix="/gamificacion", tags=["Gamificación"])
 logros = []

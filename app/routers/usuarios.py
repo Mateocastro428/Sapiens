@@ -2,7 +2,7 @@ from fastapi import APIRouter, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
-from models.usuario import Usuario
+from app.models.usuario import Usuario
 
 router = APIRouter(tags=["Usuarios"])
 
