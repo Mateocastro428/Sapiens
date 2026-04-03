@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
-from app.routers.usuarios import router as usuarios_router
-from app.routers.contenidos import router as contenidos_router
-from app.routers.gamificacion import router as gamificacion_router
-from app.routers.comunidad import router as comunidad_router
+from app.interfaces.routers.usuarios import router as usuarios_router
+from app.interfaces.routers.contenidos import router as contenidos_router
+from app.interfaces.routers.gamificacion import router as gamificacion_router
+from app.interfaces.routers.comunidad import router as comunidad_router
 
 app = FastAPI(title="Sapiens API")
 
