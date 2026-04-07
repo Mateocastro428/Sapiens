@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.models.comunidad import Amistad, Mensaje
+from app.domain.schemas import Amistad, Mensaje
 
 router = APIRouter(prefix="/comunidad", tags=["Comunidad"])
 

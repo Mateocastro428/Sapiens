@@ -2,7 +2,7 @@ from fastapi import APIRouter, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
-from app.models.usuario import Usuario
+from app.domain.schemas.user import UsuarioCreate
 
 router = APIRouter(tags=["Usuarios"])
 
@@ -16,14 +16,10 @@ def formulario(request: Request):
 
 @router.post("/registro")
 def registrar(username: str = Form(...), email: str = Form(...), password: str = Form(...)):
-
-    usuario = Usuario(
-        id=len(usuarios)+1,
+    user_data = UsuarioCreate(
         username=username,
         email=email,
         password=password
     )
-
-    usuarios.append(usuario.dict())
-
-    return {"mensaje": "Usuario registrado", "usuario": usuario}
+    usuarios.append(user_data)
+    return {"mensaje": "Usuario registrado", "usuario": user_data}
