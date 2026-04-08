@@ -1,25 +1,46 @@
-from fastapi import APIRouter, Form
-from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
-from fastapi import Request
-from app.domain.schemas.user import UsuarioCreate
+from fastapi import APIRouter, Form, Depends
+from sqlalchemy.orm import Session
+from app.infrastructure.database import get_db
+from app.domain.models.user import User
+from app.application.user_service import login_usuario
+from passlib.context import CryptContext
+
+ph = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 router = APIRouter(tags=["Usuarios"])
 
-templates = Jinja2Templates(directory="templates")
-
-usuarios = []
-
-@router.get("/registro", response_class=HTMLResponse)
-def formulario(request: Request):
-    return templates.TemplateResponse("register.html", {"request": request})
 
 @router.post("/registro")
-def registrar(username: str = Form(...), email: str = Form(...), password: str = Form(...)):
-    user_data = UsuarioCreate(
+def registrar(
+    username: str = Form(...),
+    email: str = Form(...),
+    password: str = Form(...),
+    db: Session = Depends(get_db)
+):
+    password_hash = ph.hash(password)
+
+    nuevo_usuario = User(
         username=username,
         email=email,
-        password=password
+        password=password_hash
     )
-    usuarios.append(user_data)
-    return {"mensaje": "Usuario registrado", "usuario": user_data}
+
+    db.add(nuevo_usuario)
+    db.commit()
+    db.refresh(nuevo_usuario)
+
+    return {"mensaje": "Usuario registrado"}
+
+
+@router.post("/inicio-sesion")
+def inicio_sesion(
+    email: str = Form(...),
+    password: str = Form(...),
+    db: Session = Depends(get_db)
+):
+    usuario = login_usuario(db, email, password)
+
+    if not usuario:
+        return {"error": "Credenciales incorrectas"}
+
+    return {"mensaje": "Login exitoso", "usuario": usuario.username}
