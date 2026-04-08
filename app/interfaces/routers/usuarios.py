@@ -63,4 +63,57 @@ def perfil(usuario=Depends(obtener_usuario_actual)):
         "mensaje": "Acceso autorizado",
         "usuario": usuario.username,
         "email": usuario.email
-    }
+    }# 🔹 LISTAR USUARIOS
+@router.get("/")
+def listar_usuarios(db: Session = Depends(get_db)):
+    return db.query(User).all()
+
+
+# 🔹 OBTENER USUARIO POR ID
+@router.get("/{user_id}")
+def obtener_usuario(user_id: int, db: Session = Depends(get_db)):
+    usuario = db.query(User).filter(User.id == user_id).first()
+    
+    if not usuario:
+        return {"error": "Usuario no encontrado"}
+    
+    return usuario
+
+
+# 🔹 ACTUALIZAR USUARIO
+@router.put("/{user_id}")
+def actualizar_usuario(
+    user_id: int,
+    username: str = Form(...),
+    db: Session = Depends(get_db)
+):
+    usuario = db.query(User).filter(User.id == user_id).first()
+
+    if not usuario:
+        return {"error": "Usuario no encontrado"}
+
+    usuario.username = username
+    db.commit()
+
+    return {"mensaje": "Usuario actualizado"}
+
+
+# 🔹 ELIMINAR USUARIO
+@router.delete("/{user_id}")
+def eliminar_usuario(user_id: int, db: Session = Depends(get_db)):
+    usuario = db.query(User).filter(User.id == user_id).first()
+
+    if not usuario:
+        return {"error": "Usuario no encontrado"}
+
+    db.delete(usuario)
+    db.commit()
+
+    return {"mensaje": "Usuario eliminado"}
+
+@router.get("/")
+def listar_usuarios(
+    usuario=Depends(obtener_usuario_actual),
+    db: Session = Depends(get_db)
+):
+    return db.query(User).all()
