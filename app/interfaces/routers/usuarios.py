@@ -63,7 +63,8 @@ def perfil(usuario=Depends(obtener_usuario_actual)):
         "mensaje": "Acceso autorizado",
         "usuario": usuario.username,
         "email": usuario.email
-    }# 🔹 LISTAR USUARIOS
+    }
+# 🔹 LISTAR USUARIOS
 @router.get("/")
 def listar_usuarios(db: Session = Depends(get_db)):
     return db.query(User).all()
