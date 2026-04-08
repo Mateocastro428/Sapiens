@@ -4,7 +4,7 @@ from app.infrastructure.database import get_db
 from app.domain.models.user import User
 from app.application.user_service import login_usuario
 from passlib.context import CryptContext
-
+from app.infrastructure.security import crear_token, obtener_usuario_actual
 ph = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 router = APIRouter(tags=["Usuarios"])
@@ -31,7 +31,6 @@ def registrar(
 
     return {"mensaje": "Usuario registrado"}
 
-
 @router.post("/inicio-sesion")
 def inicio_sesion(
     email: str = Form(...),
@@ -43,4 +42,18 @@ def inicio_sesion(
     if not usuario:
         return {"error": "Credenciales incorrectas"}
 
-    return {"mensaje": "Login exitoso", "usuario": usuario.username}
+    token = crear_token({
+        "sub": usuario.email
+    })
+
+    return {
+        "access_token": token,
+        "token_type": "bearer"
+    }
+
+@router.get("/perfil")
+def perfil(usuario=Depends(obtener_usuario_actual)):
+    return {
+        "mensaje": "Acceso autorizado",
+        "usuario": usuario
+    }
