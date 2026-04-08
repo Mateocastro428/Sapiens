@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sapiens · Historia gamificada por niveles</title>
+
+  <link rel="stylesheet" href="/static/css/base.css" />
+  <link rel="stylesheet" href="/static/css/nav.css" />
+  <link rel="stylesheet" href="/static/css/hero.css" />
+  <link rel="stylesheet" href="/static/css/progress.css" />
+  <link rel="stylesheet" href="/static/css/eras.css" />
+  <link rel="stylesheet" href="/static/css/how.css" />
+  <link rel="stylesheet" href="/static/css/fusion-badge.css" />
+  <link rel="stylesheet" href="/static/css/cta.css" />
+  <link rel="stylesheet" href="/static/css/footer.css" />
+  <link rel="stylesheet" href="/static/css/responsive.css" />
+</head>
+<body>
+  <div class="page">
+
+    <!-- NAV -->
+    <nav class="nav">
+      <div class="nav-logo">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 15 Q5 8 9 9 Q13 10 15 4" stroke="#F5EFDC" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <circle cx="9" cy="6" r="3" fill="none" stroke="#F5EFDC" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <span class="nav-brand">SAPIENS</span>
+      </div>
+      <div class="nav-links">
+        <a href="#">Eras</a>
+        <a href="#">Mi progreso</a>
+        <a href="#">Acerca de</a>
+      </div>
+      <button class="nav-cta">Iniciar sesión</button>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-eyebrow">Plataforma educativa · Historia gamificada por niveles</div>
+        <h1 class="hero-h1">Descubre el origen<br>de la humanidad,<br>nivel a nivel</h1>
+        <p class="hero-sub">
+          Viaja desde la Prehistoria hasta la Edad Moderna.
+          Cada era es un reto. Cada reto, un paso en tu evolución.
+        </p>
+        <div class="hero-actions">
+          <button class="btn-primary">Empieza tu evolución</button>
+          <button class="btn-secondary">Ver eras disponibles</button>
+        </div>
+      </div>
+      <div class="hero-right">
+        <!--
+          Pon tu imagen en static/img/hero-image.jpg
+          (cualquier formato: jpg, png, webp)
+        -->
+        <img
+          class="hero-image"
+          src="/static/img/hero-image.jpg"
+          alt="Evolución de la humanidad a través de las eras"
+        />
+      </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-n">+12.000</div>
+        <div class="stat-l">Estudiantes activos</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-n">6 Eras</div>
+        <div class="stat-l">De la Prehistoria a la Modernidad</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-n">72 Retos</div>
+        <div class="stat-l">Contenido verificado</div>
+      </div>
+    </div>
+
+    <!-- ERAS -->
+    <section class="section">
+      <div class="section-label">Tu camino evolutivo</div>
+      <h2 class="section-title">Eras desbloqueables</h2>
+      <p class="section-sub">
+        Avanza en orden cronológico. Cada era desbloquea la siguiente
+        y amplía tu árbol del conocimiento.
+      </p>
+      <div class="eras-grid">
+
+        <div class="era-card">
+          <div class="era-thumb" style="background:#EDE0C8">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+              <circle cx="36" cy="28" r="14" fill="none" stroke="#8B4513" stroke-width="1.5"/>
+              <path d="M22 48 Q28 34 36 36 Q44 38 50 48" stroke="#8B4513" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              <path d="M18 60 Q36 50 54 60" stroke="#8B4513" stroke-width="1" fill="none"/>
+            </svg>
+          </div>
+          <div class="era-body">
+            <div class="era-badge" style="color:#8B4513">Era 1 · Desbloqueada</div>
+            <div class="era-name">Prehistoria</div>
+            <div class="era-desc">Paleolítico, Neolítico, primeras herramientas y asentamientos humanos</div>
+            <div class="prog-track"><div class="prog-fill" style="width:75%"></div></div>
+            <div class="prog-label">75% completado · 9/12 retos</div>
+          </div>
+        </div>
+
+        <div class="era-card">
+          <div class="era-thumb" style="background:#E8DECE">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+              <rect x="18" y="36" width="36" height="22" fill="none" stroke="#1B2A6B" stroke-width="1.5"/>
+              <path d="M18 36 L36 20 L54 36" stroke="#1B2A6B" stroke-width="1.5" fill="none"/>
+              <rect x="28" y="42" width="10" height="16" fill="none" stroke="#1B2A6B" stroke-width="1"/>
+              <line x1="36" y1="20" x2="36" y2="12" stroke="#D4A843" stroke-width="1.2"/>
+              <circle cx="36" cy="10" r="3" fill="#D4A843"/>
+            </svg>
+          </div>
+          <div class="era-body">
+            <div class="era-badge" style="color:#1B2A6B">Era 2 · Desbloqueada</div>
+            <div class="era-name">Edad Antigua</div>
+            <div class="era-desc">Mesopotamia, Egipto, Grecia clásica y el Imperio Romano</div>
+            <div class="prog-track"><div class="prog-fill" style="width:30%"></div></div>
+            <div class="prog-label">30% completado · 4/12 retos</div>
+          </div>
+        </div>
+
+        <div class="era-card locked">
+          <div class="era-thumb" style="background:#E0D8CE">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+              <rect x="22" y="32" width="28" height="24" rx="2" fill="none" stroke="#888" stroke-width="1.5"/>
+              <path d="M28 32 Q28 20 36 20 Q44 20 44 32" stroke="#888" stroke-width="1.5" fill="none"/>
+              <circle cx="36" cy="44" r="4" fill="none" stroke="#888" stroke-width="1.2"/>
+              <line x1="36" y1="48" x2="36" y2="53" stroke="#888" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div class="era-body">
+            <div class="era-badge" style="color:#888">Era 3 · Bloqueada</div>
+            <div class="era-name">Edad Media</div>
+            <div class="era-desc">Completa Edad Antigua para desbloquear esta era</div>
+            <div class="prog-track"><div class="prog-fill" style="width:0%"></div></div>
+            <div class="prog-label" style="color:#aaa">0 / 12 retos</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section class="how-section">
+      <div class="how-label">Mecánica</div>
+      <h2 class="how-title">¿Cómo funciona Sapiens?</h2>
+      <div class="steps-row">
+        <div class="step-box">
+          <div class="step-num">01</div>
+          <div class="step-t">Crea tu cuenta</div>
+          <div class="step-s">Registro gratuito. Sin tarjeta de crédito.</div>
+        </div>
+        <div class="step-box">
+          <div class="step-num">02</div>
+          <div class="step-t">Elige una era</div>
+          <div class="step-s">Empieza en la Prehistoria y avanza en orden.</div>
+        </div>
+        <div class="step-box">
+          <div class="step-num">03</div>
+          <div class="step-t">Resuelve retos</div>
+          <div class="step-s">Preguntas, análisis y desafíos contextuales.</div>
+        </div>
+        <div class="step-box accent">
+          <div class="step-num">04</div>
+          <div class="step-t">Evoluciona</div>
+          <div class="step-s">Desbloquea eras y construye tu árbol del conocimiento.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROPUESTA DE VALOR -->
+    <section class="value-section">
+      <div class="section-label">Por qué Sapiens</div>
+      <h2 class="section-title">Aprendizaje que avanza contigo</h2>
+      <div class="value-grid">
+
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="12" r="8" stroke="#C15B3A" stroke-width="1.5" fill="none"/>
+            <path d="M10 26 Q14 20 18 22 Q22 24 26 26" stroke="#C15B3A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <path d="M6 32 Q12 28 30 32" stroke="#C15B3A" stroke-width="1" fill="none"/>
+          </svg>
+          <div class="value-title">Progresión real</div>
+          <div class="value-desc">Cada nivel construye sobre el anterior. No puedes saltarte la historia, igual que no puedes saltarte el tiempo.</div>
+        </div>
+
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 36 36" fill="none">
+            <rect x="6" y="10" width="24" height="18" rx="2" stroke="#1B2A6B" stroke-width="1.5" fill="none"/>
+            <path d="M6 16 L30 16" stroke="#1B2A6B" stroke-width="1"/>
+            <path d="M14 22 L22 22" stroke="#1B2A6B" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="28" cy="8" r="5" fill="#1B2A6B"/>
+            <path d="M26 8 L28 10 L31 7" stroke="#F5EFDC" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          </svg>
+          <div class="value-title">Contenido riguroso</div>
+          <div class="value-desc">Material académico estructurado por historiadores. Información verificada y presentada en contexto.</div>
+        </div>
+
+        <div class="value-card">
+          <svg class="value-icon" viewBox="0 0 36 36" fill="none">
+            <path d="M18 6 L21 13 L29 13 L23 18 L25 26 L18 21 L11 26 L13 18 L7 13 L15 13 Z"
+                  stroke="#D4A843" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+          </svg>
+          <div class="value-title">Logros desbloqueables</div>
+          <div class="value-desc">Cada era superada desbloquea contenido exclusivo, insignias y acceso a nuevos periodos históricos.</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+      <h2 class="cta-h">¿Listo para tu primera era?</h2>
+      <p class="cta-sub">Únete y comienza tu recorrido desde la Prehistoria. Es gratis.</p>
+      <button class="cta-btn">Crear mi cuenta</button>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-brand">SAPIENS</div>
+      <div class="footer-links">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos de uso</a>
+        <a href="#">Contacto</a>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>

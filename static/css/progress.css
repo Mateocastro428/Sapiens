@@ -1,0 +1,52 @@
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--color-navy);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.stat-item {
+  padding: 20px 40px;
+  border-right: 0.5px solid var(--color-navy-mid);
+  text-align: center;
+}
+
+.stat-item:last-child {
+  border-right: none;
+}
+
+.stat-n {
+  font-family: var(--font-serif);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-gold);
+}
+
+.stat-l {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--color-navy-text);
+  margin-top: 2px;
+  letter-spacing: .04em;
+}
+
+/* ── PROGRESS BAR (era cards) ── */
+.prog-track {
+  height: 4px;
+  background: var(--color-cream-mid);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.prog-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--color-gold);
+}
+
+.prog-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--color-brown);
+  margin-top: 5px;
+}
