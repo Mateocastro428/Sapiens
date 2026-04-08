@@ -1,0 +1,145 @@
+/* eras.css - Sección de eras históricas (arquitectura B + detalles A) */
+.eras-header {
+  padding: 40px 28px 0;
+  background: var(--blanco);
+}
+
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 5px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.eras-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+  padding: 0 28px 40px;
+  background: var(--blanco);
+}
+
+.era-card {
+  background: var(--blanco);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.era-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(27,42,107,0.1);
+}
+
+.era-card.active {
+  border-color: rgba(193,91,58,0.3);
+  box-shadow: 0 0 0 2px rgba(193,91,58,0.12);
+}
+
+.era-card.locked {
+  background: var(--crema);
+  border-color: var(--border);
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.era-card.locked:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.era-thumb {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  background: var(--crema);
+}
+
+.era-card.active .era-thumb {
+  background: rgba(193,91,58,0.07);
+}
+
+.era-body {
+  padding: 10px 10px 12px;
+}
+
+.era-status {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.st-open { color: var(--terracota); }
+.st-new { color: var(--cian-dark); }
+.st-locked { color: var(--muted); }
+
+.era-name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto);
+  margin-bottom: 3px;
+  line-height: 1.2;
+}
+
+.era-desc {
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.4;
+  margin-bottom: 8px;
+  font-weight: 300;
+}
+
+.era-bar-track {
+  height: 3px;
+  background: rgba(0,0,0,0.06);
+  border-radius: 2px;
+  margin-bottom: 6px;
+  overflow: hidden;
+}
+
+.era-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+}
+.fill-terra { background: var(--terracota); }
+.fill-cian { background: var(--cian); }
+
+.era-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 9px;
+  color: var(--muted);
+}
+
+.era-meta .stars {
+  color: var(--dorado);
+  letter-spacing: -1px;
+}
+
+.era-lock {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 13px;
+  opacity: 0.5;
+}

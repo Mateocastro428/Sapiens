@@ -1,0 +1,42 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --terracota: #C15B3A;
+  --terracota-light: #D97055;
+  --terracota-pale: rgba(193,91,58,0.1);
+  --dorado: #D4A843;
+  --dorado-dark: #A67C28;
+  --dorado-glow: rgba(212,168,67,0.18);
+  --navy: #1B2A6B;
+  --navy-dark: #0F1A4A;
+  --navy-mid: #243380;
+  --navy-pale: #F0F3FA;
+  --cian: #00B8D4;
+  --cian-dark: #0097AF;
+  --cian-light: #E0F8FC;
+  --crema: #F7F4EE;
+  --crema-dark: #EDE8DC;
+  --blanco: #FFFFFF;
+  --carbon: #1A1510;
+  --texto: #1E1A30;
+  --muted: #6B6878;
+  --border: #E4E0D8;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--crema);
+  color: var(--texto);
+  font-size: 15px;
+  line-height: 1.65;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
