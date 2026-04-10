@@ -1,0 +1,32 @@
+/* Encabezado del formulario */
+.form-header { margin-bottom: 36px; }
+
+.form-vol {
+  font-family: var(--fb); font-size: 9px; font-weight: 400;
+  letter-spacing: .24em; text-transform: uppercase; color: var(--ink-lt);
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+.form-vol::after { content: ''; flex: 1; height: 1px; background: var(--rule-lt); }
+
+.form-kicker {
+  font-family: var(--fn); font-size: 12px; font-style: italic; color: var(--terra);
+  letter-spacing: .06em; margin-bottom: 6px;
+}
+
+.form-title {
+  font-family: var(--fn); font-size: clamp(28px, 3vw, 38px);
+  font-weight: 300; line-height: 1.1; color: var(--ink);
+}
+.form-title strong { font-weight: 700; font-style: italic; color: var(--navy-deep); display: block; }
+
+.form-rule {
+  display: flex; align-items: center; gap: 10px; margin: 18px 0 14px;
+}
+.form-rule-line { flex: 1; height: 1px; background: var(--rule); }
+.form-rule-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+
+.form-sub {
+  font-family: var(--fn); font-size: 14px; font-weight: 300; font-style: italic;
+  color: var(--ink-lt); line-height: 1.65;
+}

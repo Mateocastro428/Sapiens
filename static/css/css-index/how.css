@@ -1,0 +1,101 @@
+/* Improved how-section legibility */
+.how-section {
+  background: var(--navy-deep);
+  padding: 80px var(--margin);
+  border-top: 3px solid var(--gold);
+  position: relative;
+}
+.how-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 50%, rgba(28,43,107,.4) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Step rows - better contrast */
+.step-row {
+  display: grid; grid-template-columns: 64px 1fr;
+  background: rgba(28,43,107,.75);
+  transition: background .2s;
+  gap: 0;
+}
+.step-row:hover { background: rgba(28,43,107,1); }
+
+
+
+.how-inner {
+  max-width: 1280px; margin: 0 auto;
+  display: grid; grid-template-columns: 300px 1fr; gap: 72px;
+  align-items: start;
+}
+
+.how-text {}
+
+.how-label {
+  font-family: var(--fb);
+  font-size: 9px; font-weight: 400;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--navy-lt); opacity: .6;
+  margin-bottom: 10px;
+}
+
+.how-title {
+  font-family: var(--fn);
+  font-size: 36px; font-weight: 300; line-height: 1.15;
+  color: var(--paper);
+  margin-bottom: 20px;
+}
+.how-title em { font-style: italic; color: var(--gold-pale); font-weight: 600; }
+
+.how-desc {
+  font-family: var(--fn);
+  font-size: 15px; font-weight: 300; font-style: italic;
+  color: rgba(246,240,226,.85); line-height: 1.75;
+  border-left: 2px solid rgba(184,136,14,.4);
+  padding-left: 16px;
+}
+
+/* Steps como tabla de procedimiento */
+.steps-table {
+  display: flex; flex-direction: column; gap: 1px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.07);
+}
+
+
+.step-row.step-accent-row { background: var(--terra); }
+.step-row.step-accent-row:hover { background: #9E3E20; }
+
+.step-num-cell {
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px 0;
+  border-right: 1px solid rgba(255,255,255,.07);
+}
+.step-accent-row .step-num-cell { border-right-color: rgba(255,255,255,.15); }
+
+.step-num {
+  font-family: var(--fn);
+  font-size: 13px; font-weight: 700;
+  color: var(--gold-pale);
+  letter-spacing: .06em;
+}
+.step-accent-row .step-num { color: rgba(255,255,255,.6); }
+
+.step-content { padding: 20px 24px; }
+
+.step-title {
+  font-family: var(--fn);
+  font-size: 16px; font-weight: 600; color: #F6F0E2;
+  margin-bottom: 4px;
+}
+
+.step-desc {
+  font-family: var(--fn);
+  font-size: 13px; font-weight: 300; font-style: italic;
+  color: #D4DCEF; line-height: 1.6;
+}
+.step-accent-row .step-desc { color: rgba(246,240,226,.85); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PROPUESTA DE VALOR — diseño columna editorial
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */

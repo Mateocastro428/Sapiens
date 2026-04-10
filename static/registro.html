@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sapiens · Crear cuenta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Cormorant+SC:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- CSS Modular Components — Registro -->
+<link rel="stylesheet" href="/static/css/css-registro/base.css">
+<link rel="stylesheet" href="/static/css/css-registro/panel-left.css">
+<link rel="stylesheet" href="/static/css/css-registro/form-layout.css">
+<link rel="stylesheet" href="/static/css/css-registro/form-header.css">
+<link rel="stylesheet" href="/static/css/css-registro/form-fields.css">
+<link rel="stylesheet" href="/static/css/css-registro/form-divider.css">
+<link rel="stylesheet" href="/static/css/css-registro/form-buttons.css">
+<link rel="stylesheet" href="/static/css/css-registro/form-checkbox.css">
+<link rel="stylesheet" href="/static/css/css-registro/form-submit.css">
+<link rel="stylesheet" href="/static/css/css-registro/form-footer.css">
+<link rel="stylesheet" href="/static/css/css-registro/form-tabs.css">
+
+</head>
+<body>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PANEL IZQUIERDO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="panel-left">
+  <div class="panel-bg"></div>
+  <div class="panel-veil-top"></div>
+  <div class="panel-veil-side"></div>
+  <div class="panel-frame"></div>
+
+  <div class="panel-content">
+
+    <!-- Logo -->
+    <a href="/" class="panel-logo" style="text-decoration:none;">
+      <div class="panel-mark">
+        <svg width="20" height="20" viewBox="0 0 18 18" fill="none">
+          <circle cx="9" cy="6.5" r="3.8" stroke="#F6F0E2" stroke-width="1.3"/>
+          <path d="M2.5 16.5 Q5.5 11 9 12 Q12.5 13 15.5 16.5" stroke="#F6F0E2" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+          <path d="M1 17.5 Q9 14 17 17.5" stroke="#B8880E" stroke-width=".9" fill="none"/>
+        </svg>
+      </div>
+      <span class="panel-wordmark">SAPIENS</span>
+    </a>
+
+    <!-- Cita -->
+    <div class="panel-quote-wrap">
+      <div class="panel-ornament">
+        <div class="panel-ornament-line"></div>
+        <div class="panel-ornament-diamond"></div>
+        <div class="panel-ornament-line"></div>
+      </div>
+
+      <p class="panel-quote">
+        "El que no conoce la historia<br>
+        está <em>condenado a repetirla</em>,<br>
+        pero quien la estudia, la<br>
+        transforma en sabiduría."
+      </p>
+      <div class="panel-attribution">— Adaptado de George Santayana, 1905</div>
+
+      <div class="panel-ornament" style="margin-top:28px; margin-bottom:0;">
+        <div class="panel-ornament-line"></div>
+        <div class="panel-ornament-diamond"></div>
+        <div class="panel-ornament-line"></div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="panel-stats">
+      <div class="ps-item">
+        <span class="ps-n">6</span>
+        <span class="ps-l">Eras históricas</span>
+      </div>
+      <div class="ps-item">
+        <span class="ps-n">72</span>
+        <span class="ps-l">Retos verificados</span>
+      </div>
+      <div class="ps-item">
+        <span class="ps-n">100%</span>
+        <span class="ps-l">Gratis para empezar</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PANEL DERECHO — FORMULARIO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<div class="panel-right">
+  <div class="form-container">
+
+    <!-- Encabezado -->
+    <div class="form-header">
+      <div class="form-vol">Acceso a la plataforma</div>
+      <p class="form-kicker">Comienza tu recorrido intelectual</p>
+      <h1 class="form-title">
+        Crea tu cuenta
+        <strong>en Sapiens.</strong>
+      </h1>
+      <div class="form-rule">
+        <div class="form-rule-line"></div>
+        <div class="form-rule-diamond"></div>
+        <div class="form-rule-line"></div>
+      </div>
+      <p class="form-sub">
+        Registro gratuito. Sin tarjeta de crédito.<br>
+        Accede a la Era I completa desde el primer día.
+      </p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="form-tabs">
+      <div class="form-tab active">Crear cuenta</div>
+      <div class="form-tab">Iniciar sesión</div>
+    </div>
+
+    <!-- Botones sociales -->
+    
+
+    <!-- Campos del formulario -->
+    <div id="registro-form" class="form-body active">
+
+      <div class="field-group-row">
+        <!-- Nombre -->
+        <div class="field-group">
+          <div class="field-label">
+            <span class="label-text">Nombre</span>
+          </div>
+          <div class="field-wrap">
+            <svg class="field-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+              <circle cx="9" cy="6" r="3.2"/>
+              <path d="M2.5 16 Q4.5 11.5 9 12 Q13.5 11.5 15.5 16"/>
+            </svg>
+            <input class="field-input" type="text" name="nombre" placeholder="Hernán" autocomplete="given-name" required/>
+          </div>
+        </div>
+        <!-- Apellido -->
+        <div class="field-group">
+          <div class="field-label">
+            <span class="label-text">Apellido</span>
+          </div>
+          <div class="field-wrap">
+            <svg class="field-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+              <circle cx="9" cy="6" r="3.2"/>
+              <path d="M2.5 16 Q4.5 11.5 9 12 Q13.5 11.5 15.5 16"/>
+            </svg>
+            <input class="field-input" type="text" name="apellido" placeholder="Cortés" autocomplete="family-name" required/>
+          </div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="field-group">
+        <div class="field-label">
+          <span class="label-text">Correo electrónico</span>
+        </div>
+        <div class="field-wrap">
+          <svg class="field-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="14" height="10" rx="1.5"/>
+            <path d="M2 6l7 5 7-5"/>
+          </svg>
+          <input class="field-input" type="email" name="email" placeholder="tu@correo.com" autocomplete="email" required/>
+        </div>
+      </div>
+
+      <!-- Contraseña -->
+      <div class="field-group">
+        <div class="field-label">
+          <span class="label-text">Contraseña</span>
+          <span class="label-opt">mín. 8 caracteres</span>
+        </div>
+        <div class="field-wrap">
+          <svg class="field-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <rect x="4" y="8" width="10" height="8" rx="1.2"/>
+            <path d="M6 8V6a3 3 0 0 1 6 0v2"/>
+            <circle cx="9" cy="12.5" r="1.2" fill="currentColor" stroke="none"/>
+          </svg>
+          <input class="field-input" type="password" name="password" placeholder="••••••••" autocomplete="new-password" minlength="8" required/>
+        </div>
+        <p class="field-hint">Una mayúscula, un número y un símbolo especial.</p>
+      </div>
+
+      <!-- Nivel de conocimiento histórico -->
+      <div class="field-group">
+        <div class="field-label">
+          <span class="label-text">Tu nivel histórico</span>
+          <span class="label-opt">opcional</span>
+        </div>
+        <div class="field-wrap">
+          <svg class="field-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 2L3 6v5c0 3.5 2.5 6.5 6 7.5C15.5 17.5 15 14 15 11V6L9 2Z"/>
+          </svg>
+          <select class="field-select" name="nivel">
+            <option value="" disabled selected>Selecciona tu nivel…</option>
+            <option value="principiante">Principiante — sé poco de historia</option>
+            <option value="intermedio">Intermedio — conozco los eventos principales</option>
+            <option value="avanzado">Avanzado — estudio o estudié historia</option>
+            <option value="experto">Experto — historiador o académico</option>
+          </select>
+          <svg class="field-select-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Términos -->
+      <div class="field-checkbox-wrap">
+        <label class="custom-checkbox">
+          <input type="checkbox" name="terminos" required/>
+          <svg class="check-mark" width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M2 6l3 3 5-5" stroke="#F6F0E2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </label>
+        <p class="checkbox-text">
+          He leído y acepto los <a href="#">Términos de uso</a>
+          y la <a href="#">Política de privacidad</a> de Sapiens.
+          Entiendo que mis datos no serán vendidos a terceros.
+        </p>
+      </div>
+
+      <!-- Botón principal -->
+      <button class="btn-submit" type="submit">
+        Crear mi cuenta gratis
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 7h10M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+    </div><!-- /registro-form -->
+
+    <div id="login-form" class="form-body">
+
+      <!-- Email -->
+      <div class="field-group">
+        <div class="field-label">
+          <span class="label-text">Correo electrónico</span>
+        </div>
+        <div class="field-wrap">
+          <svg class="field-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="14" height="10" rx="1.5"/>
+            <path d="M2 6l7 5 7-5"/>
+          </svg>
+          <input class="field-input" type="email" name="email" placeholder="tu@correo.com" autocomplete="email" required/>
+        </div>
+      </div>
+
+      <!-- Contraseña -->
+      <div class="field-group">
+        <div class="field-label">
+          <span class="label-text">Contraseña</span>
+        </div>
+        <div class="field-wrap">
+          <svg class="field-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round">
+            <rect x="4" y="8" width="10" height="8" rx="1.2"/>
+            <path d="M6 8V6a3 3 0 0 1 6 0v2"/>
+            <circle cx="9" cy="12.5" r="1.2" fill="currentColor" stroke="none"/>
+          </svg>
+          <input class="field-input" type="password" name="password" placeholder="••••••••" autocomplete="current-password" required/>
+        </div>
+      </div>
+
+      <!-- Botón principal -->
+      <button class="btn-submit" type="submit">
+        Iniciar sesión
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 7h10M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+    </div><!-- /login-form -->
+
+    <!-- Footer -->
+    <div class="form-footer">
+      <p class="form-footer-text">
+        ¿Ya tienes cuenta?
+        <span class="form-footer-link">Inicia sesión aquí</span>
+      </p>
+
+      <div class="vol-marker">
+        <span class="vol-marker-text">Sapiens · Edición académica · v1.0</span>
+        <div class="vol-marker-dots">
+          <div class="vol-dot active"></div>
+          <div class="vol-dot active"></div>
+          <div class="vol-dot"></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /form-container -->
+</div><!-- /panel-right -->
+
+<script src="/static/js/js-registro/main.js"></script>
+
+</body>
+</html>

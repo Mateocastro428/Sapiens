@@ -1,0 +1,501 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SAPIENS · Registro
+   Enciclopedia ilustrada del Renacimiento
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+:root {
+  --paper:       #F6F0E2;
+  --paper-warm:  #EFE5CC;
+  --paper-deep:  #E2D3B4;
+  --ink:         #16100A;
+  --ink-mid:     #3D2C1E;
+  --ink-lt:      #7A6050;
+  --ink-faint:   #B8A898;
+  --navy:        #1C2B6B;
+  --navy-deep:   #111A4A;
+  --navy-lt:     #C0CCEC;
+  --terra:       #B84F2C;
+  --terra-lt:    #D4724E;
+  --gold:        #B8880E;
+  --gold-lt:     #D4A820;
+  --gold-pale:   #EDD070;
+  --rule:        #C4B090;
+  --rule-lt:     #DDD0B8;
+  --xp-green:    #2E7D4F;
+  --fn:          'Cormorant Garamond', 'Times New Roman', serif;
+  --fc:          'Cormorant SC', 'Times New Roman', serif;
+  --fb:          'Jost', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+
+body {
+  font-family: var(--fn);
+  background: var(--navy-deep);
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ━━━━ PANEL IZQUIERDO — ilustración histórica ━━━━ */
+.panel-left {
+  width: 46%;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--navy-deep);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagen de fondo */
+.panel-bg {
+  position: absolute; inset: 0;
+  background-image: url('../../img/stonehenge.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  filter: sepia(20%) contrast(1.08) brightness(.7);
+  transform: scale(1.04);
+  transition: transform 14s ease;
+}
+.panel-bg:hover { transform: scale(1.0); }
+
+/* Capas de velo */
+.panel-veil-top {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(17,26,74,.82) 0%,
+    rgba(17,26,74,.3) 40%,
+    rgba(17,26,74,.15) 65%,
+    rgba(17,26,74,.75) 100%
+  );
+  z-index: 1;
+}
+.panel-veil-side {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 60%, rgba(17,26,74,.95) 100%);
+  z-index: 2;
+}
+
+/* Marco interior estilo enciclopedia */
+.panel-frame {
+  position: absolute; inset: 20px; z-index: 3;
+  border: 1px solid rgba(196,176,144,.22);
+  pointer-events: none;
+}
+.panel-frame::before {
+  content: '';
+  position: absolute; inset: 6px;
+  border: 1px solid rgba(196,176,144,.1);
+}
+
+/* Contenido del panel izquierdo */
+.panel-content {
+  position: relative; z-index: 4;
+  display: flex; flex-direction: column;
+  height: 100%; padding: 40px 44px;
+}
+
+/* Logo */
+.panel-logo {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: auto;
+}
+.panel-mark {
+  width: 36px; height: 36px; background: var(--terra); border-radius: 3px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.panel-wordmark {
+  font-family: var(--fc); font-size: 18px; letter-spacing: .32em;
+  background: linear-gradient(135deg, #F6F0E2 30%, #D4A820 70%, #F6F0E2 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* Cita histórica central */
+.panel-quote-wrap {
+  margin: auto 0;
+}
+.panel-ornament {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 28px;
+}
+.panel-ornament-line { flex: 1; height: 1px; background: rgba(196,176,144,.3); }
+.panel-ornament-diamond {
+  width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0;
+}
+
+.panel-quote {
+  font-family: var(--fn);
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 300; font-style: italic;
+  line-height: 1.5; color: rgba(246,240,226,.88);
+  margin-bottom: 20px;
+  letter-spacing: .01em;
+}
+.panel-quote em {
+  font-weight: 600; color: var(--gold-pale);
+  font-style: normal;
+}
+
+.panel-attribution {
+  font-family: var(--fb); font-size: 10px; font-weight: 400;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(192,204,236,.55);
+}
+
+/* Estadísticas inferiores */
+.panel-stats {
+  display: flex; gap: 0; margin-top: 48px;
+  border-top: 1px solid rgba(196,176,144,.2);
+  padding-top: 24px;
+}
+.ps-item {
+  flex: 1; padding-right: 20px;
+  border-right: 1px solid rgba(196,176,144,.15);
+  margin-right: 20px;
+}
+.ps-item:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+.ps-n {
+  display: block;
+  font-family: var(--fn); font-size: 26px; font-weight: 600;
+  color: var(--gold-lt); margin-bottom: 2px; line-height: 1;
+}
+.ps-l {
+  font-family: var(--fb); font-size: 9px; font-weight: 300;
+  letter-spacing: .16em; text-transform: uppercase; color: rgba(192,204,236,.45);
+}
+
+/* ━━━━ PANEL DERECHO — formulario ━━━━ */
+.panel-right {
+  flex: 1;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-y: auto;
+}
+
+/* Textura pergamino */
+.panel-right::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Franja gold superior */
+.panel-right::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--gold); z-index: 1;
+}
+
+.form-container {
+  position: relative; z-index: 1;
+  flex: 1;
+  display: flex; flex-direction: column;
+  padding: 52px 56px 44px;
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Encabezado del formulario */
+.form-header { margin-bottom: 36px; }
+
+.form-vol {
+  font-family: var(--fb); font-size: 9px; font-weight: 400;
+  letter-spacing: .24em; text-transform: uppercase; color: var(--ink-lt);
+  margin-bottom: 12px;
+  display: flex; align-items: center; gap: 10px;
+}
+.form-vol::after { content: ''; flex: 1; height: 1px; background: var(--rule-lt); }
+
+.form-kicker {
+  font-family: var(--fn); font-size: 12px; font-style: italic; color: var(--terra);
+  letter-spacing: .06em; margin-bottom: 6px;
+}
+
+.form-title {
+  font-family: var(--fn); font-size: clamp(28px, 3vw, 38px);
+  font-weight: 300; line-height: 1.1; color: var(--ink);
+}
+.form-title strong { font-weight: 700; font-style: italic; color: var(--navy-deep); display: block; }
+
+.form-rule {
+  display: flex; align-items: center; gap: 10px; margin: 18px 0 14px;
+}
+.form-rule-line { flex: 1; height: 1px; background: var(--rule); }
+.form-rule-diamond { width: 5px; height: 5px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+
+.form-sub {
+  font-family: var(--fn); font-size: 14px; font-weight: 300; font-style: italic;
+  color: var(--ink-lt); line-height: 1.65;
+}
+
+/* ━━━━ CAMPOS DE FORMULARIO ━━━━ */
+.form-body { flex: 1; }
+.form-body:not(.active) { display: none; }
+
+.field-group {
+  margin-bottom: 20px;
+}
+.field-group-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* Label académico */
+.field-label {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 6px;
+}
+.label-text {
+  font-family: var(--fb); font-size: 9px; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--ink-mid);
+}
+.label-opt {
+  font-family: var(--fn); font-size: 11px; font-style: italic; color: var(--ink-faint);
+}
+
+/* Input wrapper con borde estilo enciclopedia */
+.field-wrap {
+  position: relative;
+}
+
+.field-input {
+  width: 100%;
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  padding: 12px 16px 12px 44px;
+  font-family: var(--fn); font-size: 16px; font-weight: 400; color: var(--ink);
+  outline: none;
+  transition: border-color .2s, background .2s, box-shadow .2s;
+  -webkit-appearance: none;
+}
+.field-input::placeholder {
+  font-style: italic; color: var(--ink-faint);
+}
+.field-input:focus {
+  border-color: var(--navy);
+  background: var(--paper);
+  box-shadow: 0 0 0 3px rgba(28,43,107,.07);
+}
+.field-input.no-icon {
+  padding-left: 16px;
+}
+
+/* Sin icono en select */
+.field-select {
+  width: 100%;
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-radius: 0;
+  padding: 12px 40px 12px 44px;
+  font-family: var(--fn); font-size: 16px; font-weight: 400; color: var(--ink);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+}
+.field-select:focus { border-color: var(--navy); background: var(--paper); }
+
+/* Icono vectorial dentro del input */
+.field-icon {
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  width: 18px; height: 18px; pointer-events: none;
+  color: var(--ink-faint);
+  transition: color .2s;
+}
+.field-wrap:focus-within .field-icon { color: var(--navy); }
+
+/* Flecha del select */
+.field-select-arrow {
+  position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  pointer-events: none; color: var(--ink-lt);
+}
+
+/* Estado de validación — visible sin JS */
+.field-input:valid:not(:placeholder-shown) {
+  border-color: var(--xp-green);
+}
+
+/* Mensaje de ayuda */
+.field-hint {
+  font-family: var(--fn); font-size: 11px; font-style: italic; color: var(--ink-faint);
+  margin-top: 5px; padding-left: 2px;
+}
+
+/* ━━━━ SEPARADOR O ━━━━ */
+.divider {
+  display: flex; align-items: center; gap: 14px;
+  margin: 24px 0;
+}
+.divider-line { flex: 1; height: 1px; background: var(--rule-lt); }
+.divider-text {
+  font-family: var(--fn); font-size: 13px; font-style: italic; color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+/* ━━━━ BOTÓN SOCIAL ━━━━ */
+.btn-social {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  width: 100%; padding: 12px 20px;
+  background: var(--paper-warm); border: 1px solid var(--rule);
+  font-family: var(--fb); font-size: 12px; font-weight: 400; letter-spacing: .08em;
+  color: var(--ink-mid); cursor: pointer;
+  transition: border-color .2s, background .2s, transform .15s;
+  margin-bottom: 10px;
+}
+.btn-social:hover { border-color: var(--ink-mid); background: var(--paper-deep); transform: translateY(-1px); }
+.btn-social svg { flex-shrink: 0; }
+
+/* ━━━━ TÉRMINOS ━━━━ */
+.field-checkbox-wrap {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 24px;
+}
+
+/* Checkbox estilizado como sello académico */
+.custom-checkbox {
+  width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px;
+  border: 1.5px solid var(--rule); background: var(--paper-warm);
+  cursor: pointer; position: relative;
+  transition: border-color .2s, background .2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.custom-checkbox input[type="checkbox"] {
+  position: absolute; opacity: 0; inset: 0; cursor: pointer; margin: 0;
+}
+.custom-checkbox .check-mark {
+  opacity: 0; transform: scale(.5);
+  transition: opacity .2s, transform .2s;
+  pointer-events: none;
+}
+.custom-checkbox input:checked ~ .check-mark { opacity: 1; transform: scale(1); }
+.custom-checkbox:has(input:checked) { border-color: var(--navy); background: var(--navy); }
+
+.checkbox-text {
+  font-family: var(--fn); font-size: 13px; font-weight: 300; line-height: 1.6;
+  color: var(--ink-mid);
+}
+.checkbox-text a {
+  color: var(--navy); text-decoration: underline; text-decoration-color: var(--navy-lt);
+  text-underline-offset: 2px;
+}
+.checkbox-text a:hover { color: var(--terra); }
+
+/* ━━━━ BOTÓN PRINCIPAL ━━━━ */
+.btn-submit {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  width: 100%; padding: 16px 0;
+  background: var(--navy); color: var(--paper);
+  font-family: var(--fb); font-size: 13px; font-weight: 500; letter-spacing: .14em;
+  border: none; cursor: pointer;
+  box-shadow: 0 2px 16px rgba(28,43,107,.35);
+  transition: background .2s, transform .15s, box-shadow .2s;
+  position: relative; overflow: hidden;
+}
+.btn-submit::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.07) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform .5s ease;
+}
+.btn-submit:hover {
+  background: var(--navy-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(28,43,107,.45);
+}
+.btn-submit:hover::after { transform: translateX(100%); }
+.btn-submit:active { transform: translateY(0); }
+
+/* ━━━━ FOOTER DEL FORMULARIO ━━━━ */
+.form-footer {
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule-lt);
+  text-align: center;
+}
+.form-footer-text {
+  font-family: var(--fn); font-size: 14px; font-weight: 300;
+  color: var(--ink-lt);
+}
+.form-footer-link {
+  color: var(--navy); font-weight: 400; font-style: italic;
+  text-decoration: underline; text-decoration-color: var(--navy-lt);
+  text-underline-offset: 2px; cursor: pointer;
+}
+.form-footer-link:hover { color: var(--terra); }
+
+/* Número de volumen — detalle de columna editorial */
+.vol-marker {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 28px;
+}
+.vol-marker-text {
+  font-family: var(--fn); font-size: 11px; font-style: italic; color: var(--ink-faint);
+}
+.vol-marker-dots { display: flex; gap: 4px; }
+.vol-dot {
+  width: 4px; height: 4px; border-radius: 50%; background: var(--rule);
+}
+.vol-dot.active { background: var(--gold); }
+
+/* ━━━━ TABS registro / login ━━━━ */
+.form-tabs {
+  display: flex; margin-bottom: 32px;
+  border-bottom: 1px solid var(--rule);
+  gap: 0;
+}
+.form-tab {
+  flex: 1; text-align: center; padding: 10px 0 12px;
+  font-family: var(--fb); font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--ink-faint); cursor: pointer;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+  transition: color .2s, border-color .2s;
+}
+.form-tab:hover { color: var(--ink-mid); }
+.form-tab.active {
+  color: var(--navy);
+  border-bottom-color: var(--navy);
+}
+
+/* ━━━━ ANIMACIONES de entrada ━━━━ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.panel-logo   { animation: fadeUp .6s .1s ease both; }
+.panel-quote-wrap { animation: fadeUp .7s .25s ease both; }
+.panel-stats  { animation: fadeUp .6s .4s ease both; }
+
+.form-header  { animation: fadeUp .6s .15s ease both; }
+.form-tabs    { animation: fadeUp .5s .25s ease both; }
+.form-body    { animation: fadeUp .6s .35s ease both; }
+.form-footer  { animation: fadeUp .5s .45s ease both; }
+
+/* ━━━━ RESPONSIVE ━━━━ */
+@media (max-width: 900px) {
+  body { flex-direction: column; }
+  .panel-left { width: 100%; min-height: 300px; }
+  .panel-veil-side { display: none; }
+  .panel-stats { display: none; }
+  .panel-quote { font-size: 20px; }
+  .form-container { padding: 40px 32px; }
+}
+@media (max-width: 560px) {
+  .field-group-row { grid-template-columns: 1fr; }
+  .form-container { padding: 32px 24px; }
+  .panel-content { padding: 28px 28px; }
+}

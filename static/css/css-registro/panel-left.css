@@ -1,0 +1,169 @@
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SAPIENS · Registro
+   Enciclopedia ilustrada del Renacimiento
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+:root {
+  --paper:       #F6F0E2;
+  --paper-warm:  #EFE5CC;
+  --paper-deep:  #E2D3B4;
+  --ink:         #16100A;
+  --ink-mid:     #3D2C1E;
+  --ink-lt:      #7A6050;
+  --ink-faint:   #B8A898;
+  --navy:        #1C2B6B;
+  --navy-deep:   #111A4A;
+  --navy-lt:     #C0CCEC;
+  --terra:       #B84F2C;
+  --terra-lt:    #D4724E;
+  --gold:        #B8880E;
+  --gold-lt:     #D4A820;
+  --gold-pale:   #EDD070;
+  --rule:        #C4B090;
+  --rule-lt:     #DDD0B8;
+  --xp-green:    #2E7D4F;
+  --fn:          'Cormorant Garamond', 'Times New Roman', serif;
+  --fc:          'Cormorant SC', 'Times New Roman', serif;
+  --fb:          'Jost', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; }
+
+body {
+  font-family: var(--fn);
+  background: var(--navy-deep);
+  color: var(--ink);
+  min-height: 100vh;
+  display: flex;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ━━━━ PANEL IZQUIERDO — ilustración histórica ━━━━ */
+.panel-left {
+  width: 46%;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--navy-deep);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagen de fondo */
+.panel-bg {
+  position: absolute; inset: 0;
+  background-image: url('../../img/stonehenge.jpg');
+  background-size: cover;
+  background-position: center 30%;
+  filter: sepia(20%) contrast(1.08) brightness(.7);
+  transform: scale(1.04);
+  transition: transform 14s ease;
+}
+.panel-bg:hover { transform: scale(1.0); }
+
+/* Capas de velo */
+.panel-veil-top {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(17,26,74,.82) 0%,
+    rgba(17,26,74,.3) 40%,
+    rgba(17,26,74,.15) 65%,
+    rgba(17,26,74,.75) 100%
+  );
+  z-index: 1;
+}
+.panel-veil-side {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 60%, rgba(17,26,74,.95) 100%);
+  z-index: 2;
+}
+
+/* Marco interior estilo enciclopedia */
+.panel-frame {
+  position: absolute; inset: 20px; z-index: 3;
+  border: 1px solid rgba(196,176,144,.22);
+  pointer-events: none;
+}
+.panel-frame::before {
+  content: '';
+  position: absolute; inset: 6px;
+  border: 1px solid rgba(196,176,144,.1);
+}
+
+/* Contenido del panel izquierdo */
+.panel-content {
+  position: relative; z-index: 4;
+  display: flex; flex-direction: column;
+  height: 100%; padding: 40px 44px;
+}
+
+/* Logo */
+.panel-logo {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: auto;
+}
+.panel-mark {
+  width: 36px; height: 36px; background: var(--terra); border-radius: 3px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.panel-wordmark {
+  font-family: var(--fc); font-size: 18px; letter-spacing: .32em;
+  background: linear-gradient(135deg, #F6F0E2 30%, #D4A820 70%, #F6F0E2 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+/* Cita histórica central */
+.panel-quote-wrap {
+  margin: auto 0;
+}
+.panel-ornament {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 28px;
+}
+.panel-ornament-line { flex: 1; height: 1px; background: rgba(196,176,144,.3); }
+.panel-ornament-diamond {
+  width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0;
+}
+
+.panel-quote {
+  font-family: var(--fn);
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 300; font-style: italic;
+  line-height: 1.5; color: rgba(246,240,226,.88);
+  margin-bottom: 20px;
+  letter-spacing: .01em;
+}
+.panel-quote em {
+  font-weight: 600; color: var(--gold-pale);
+  font-style: normal;
+}
+
+.panel-attribution {
+  font-family: var(--fb); font-size: 10px; font-weight: 400;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: rgba(192,204,236,.55);
+}
+
+/* Estadísticas inferiores */
+.panel-stats {
+  display: flex; gap: 0; margin-top: 48px;
+  border-top: 1px solid rgba(196,176,144,.2);
+  padding-top: 24px;
+}
+.ps-item {
+  flex: 1; padding-right: 20px;
+  border-right: 1px solid rgba(196,176,144,.15);
+  margin-right: 20px;
+}
+.ps-item:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+.ps-n {
+  display: block;
+  font-family: var(--fn); font-size: 26px; font-weight: 600;
+  color: var(--gold-lt); margin-bottom: 2px; line-height: 1;
+}
+.ps-l {
+  font-family: var(--fb); font-size: 9px; font-weight: 300;
+  letter-spacing: .16em; text-transform: uppercase; color: rgba(192,204,236,.45);
+}
