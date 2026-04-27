@@ -1,0 +1,146 @@
+.nav { background: var(--navy-deep); padding: 0 var(--margin); position: sticky; top: 0; z-index: 200; border-bottom: 2px solid var(--gold); }
+.nav-inner { max-width: 1280px; margin: 0 auto; height: 58px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo a { display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; }
+.nav-mark { width: 32px; height: 32px; background: var(--terra); border-radius: 3px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.nav-wordmark { font-family: var(--fc); font-size: 18px; font-weight: 600; color: var(--paper); letter-spacing: .22em; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a { font-family: var(--fb); font-size: 12px; font-weight: 400; color: var(--navy-lt); text-decoration: none; letter-spacing: .08em; transition: color .2s; }
+.nav-links a:hover { color: #fff; }
+.nav-links a.active { color: var(--gold); font-weight: 500; }
+.nav-cta { background: var(--gold); color: var(--ink); font-family: var(--fb); font-size: 12px; font-weight: 500; padding: 8px 22px; border-radius: 2px; border: none; letter-spacing: .1em; transition: background .2s; }
+.nav-cta:hover { background: var(--gold-lt); }
+
+/* ━━━━ PAGE HEADER ━━━━ */
+.page-header {
+  background: linear-gradient(180deg, rgba(16,24,54,.38) 0%, rgba(16,24,54,.38) 100%),
+              url("/static/img/prehistoria.jpg") center/cover no-repeat;
+  border-bottom: 3px solid var(--gold);
+  padding: 64px var(--margin) 60px;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(28,43,107,.22) 0%, transparent 65%),
+              radial-gradient(ellipse at 80% 30%, rgba(184,136,14,.02) 0%, transparent 60%);
+  pointer-events: none;
+}
+.page-header-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 1; }
+.ph-vol { font-family: var(--fb); font-size: 9px; font-weight: 400; letter-spacing: .28em; text-transform: uppercase; color: var(--paper); opacity: .85; margin-bottom: 16px; }
+.ph-title { font-family: var(--fn); font-size: clamp(36px, 4vw, 56px); font-weight: 300; color: var(--paper); line-height: 1.1; margin-bottom: 16px; }
+.ph-title em { font-style: italic; font-weight: 700; color: var(--gold-pale); }
+.ph-rule { display: none; }
+.ph-lead { font-family: var(--fn); font-size: 17px; font-weight: 300; font-style: italic; color: rgba(246,240,226,.92); line-height: 1.75; max-width: 600px; }
+
+/* ━━━━ TIMELINE STRIP ━━━━ */
+.timeline-strip {
+  background: var(--navy);
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  overflow-x: auto;
+}
+.timeline-inner {
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 var(--margin);
+  display: flex;
+}
+.tl-era {
+  flex: 1; min-width: 120px;
+  padding: 14px 16px;
+  border-right: 1px solid rgba(255,255,255,.06);
+  cursor: pointer;
+  transition: background .2s;
+  position: relative;
+}
+.tl-era:last-child { border-right: none; }
+.tl-era:hover { background: rgba(255,255,255,.04); }
+.tl-era.tl-active { background: rgba(184,136,14,.1); }
+.tl-era.tl-active::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--gold); }
+.tl-num { font-family: var(--fn); font-size: 10px; font-weight: 700; color: var(--gold-pale); letter-spacing: .08em; margin-bottom: 2px; }
+.tl-name { font-family: var(--fb); font-size: 10px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--navy-lt); }
+.tl-era.locked .tl-name, .tl-era.locked .tl-num { opacity: .35; }
+.tl-locked-icon { font-size: 9px; color: var(--ink-faint); margin-top: 2px; }
+
+/* ━━━━ ERAS FULL GRID ━━━━ */
+.eras-section { padding: 64px var(--margin); background: var(--paper-warm); border-bottom: 1px solid var(--rule); }
+.eras-section-inner { max-width: 1280px; margin: 0 auto; }
+.eras-header { margin-bottom: 44px; display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; }
+.eras-header-text {}
+.sec-chapter { font-family: var(--fb); font-size: 10px; font-weight: 400; letter-spacing: .22em; text-transform: uppercase; color: var(--ink-lt); margin-bottom: 6px; }
+.sec-title { font-family: var(--fn); font-size: clamp(26px, 2.8vw, 38px); font-weight: 300; line-height: 1.15; color: var(--ink); margin-bottom: 10px; }
+.sec-title em { font-style: italic; font-weight: 600; color: var(--terra); }
+.sec-lead { font-family: var(--fn); font-size: 16px; font-weight: 300; font-style: italic; color: var(--ink-mid); line-height: 1.8; max-width: 540px; border-left: 3px solid var(--gold); padding-left: 16px; }
+.eras-legend { display: flex; gap: 20px; align-items: center; flex-shrink: 0; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-family: var(--fb); font-size: 10px; letter-spacing: .1em; color: var(--ink-lt); }
+.legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+.eras-full-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+/* Era cards */
+.era-card { background: var(--paper); border: 1px solid var(--rule); display: flex; flex-direction: column; transition: box-shadow .3s, transform .3s; }
+.era-card:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(22,16,10,.12); }
+.era-card.locked { opacity: .55; pointer-events: none; }
+.era-card.completed { border-color: var(--gold); }
+.era-figure { position: relative; height: 200px; overflow: hidden; background: var(--paper-deep); border-bottom: 1px solid var(--rule); }
+.era-figure img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: sepia(12%) contrast(1.02); transition: transform .6s ease; }
+.era-card:hover .era-figure img { transform: scale(1.06); }
+.era-figure-veil { position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, rgba(22,16,10,.55) 100%); }
+.era-figure-frame { position: absolute; inset: 8px; z-index: 2; border: 1px solid rgba(196,176,144,.35); pointer-events: none; }
+.era-fig-num { position: absolute; bottom: 12px; left: 14px; z-index: 3; font-family: var(--fn); font-size: 36px; font-weight: 700; font-style: italic; color: rgba(246,240,226,.8); line-height: 1; }
+.era-completed-badge { position: absolute; top: 12px; right: 12px; z-index: 4; background: var(--gold); color: var(--ink); font-family: var(--fb); font-size: 8px; font-weight: 500; letter-spacing: .14em; padding: 3px 8px; }
+.era-figcaption { padding: 8px 14px; background: var(--paper-warm); border-bottom: 1px solid var(--rule-lt); }
+.era-figcaption p { font-family: var(--fn); font-size: 11px; font-style: italic; font-weight: 300; color: var(--ink-lt); text-align: center; }
+.era-body { padding: 20px 20px 24px; flex: 1; display: flex; flex-direction: column; }
+.era-status { display: flex; align-items: center; gap: 6px; font-family: var(--fb); font-size: 9px; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-lt); margin-bottom: 10px; }
+.era-status-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.era-title { font-family: var(--fn); font-size: 22px; font-weight: 600; color: var(--ink); margin-bottom: 4px; line-height: 1.2; }
+.era-dates { font-family: var(--fb); font-size: 10px; font-weight: 300; letter-spacing: .1em; color: var(--ink-faint); margin-bottom: 8px; }
+.era-body-text { font-family: var(--fn); font-size: 14px; font-weight: 300; font-style: italic; color: var(--ink-mid); line-height: 1.65; margin-bottom: 18px; }
+.prog-area { margin-bottom: 18px; }
+.prog-track { height: 3px; background: var(--rule-lt); margin-bottom: 5px; overflow: hidden; }
+.prog-fill { height: 100%; background: var(--gold); transition: width .6s; }
+.prog-fill.complete { background: var(--terra); }
+.prog-text { font-family: var(--fb); font-size: 10px; font-weight: 300; letter-spacing: .1em; color: var(--ink-lt); }
+.era-btn { display: block; width: 100%; margin-top: auto; padding: 10px 0; background: transparent; font-family: var(--fb); font-size: 12px; font-weight: 500; letter-spacing: .1em; border-radius: 1px; border: 1px solid; transition: background .2s, color .2s; }
+.era-btn-terra { color: var(--terra); border-color: var(--terra); }
+.era-btn-terra:hover { background: var(--terra); color: var(--paper); }
+.era-btn-navy { color: var(--navy); border-color: var(--navy); }
+.era-btn-navy:hover { background: var(--navy); color: var(--paper); }
+.era-btn-gold { color: var(--gold); border-color: var(--gold); }
+.era-btn-gold:hover { background: var(--gold); color: var(--ink); }
+.era-btn-off { color: var(--ink-faint); border-color: var(--rule); cursor: not-allowed; }
+
+/* ━━━━ MAPA CRONOLÓGICO ━━━━ */
+.chrono-section { padding: 64px var(--margin); background: var(--paper); }
+.chrono-inner { max-width: 1280px; margin: 0 auto; }
+.chrono-header { margin-bottom: 44px; }
+.chrono-timeline {
+  position: relative;
+  padding-left: 40px;
+}
+.chrono-spine {
+  position: absolute; left: 13px; top: 0; bottom: 0;
+  width: 1px; background: var(--rule);
+}
+.chrono-item {
+  position: relative; margin-bottom: 32px;
+  display: grid; grid-template-columns: 180px 1fr;
+  gap: 32px; align-items: start;
+}
+.chrono-dot {
+  position: absolute; left: -33px; top: 6px;
+  width: 12px; height: 12px; border-radius: 50%;
+  border: 2px solid var(--paper); flex-shrink: 0;
+}
+.chrono-item.locked .chrono-dot { background: var(--rule) !important; }
+.chrono-date {
+  font-family: var(--fn); font-size: 13px; font-weight: 300; font-style: italic;
+  color: var(--ink-lt); line-height: 1.5; padding-top: 4px;
+  text-align: right;
+}
+.chrono-content { border-left: 1px solid var(--rule-lt); padding-left: 24px; }
+.chrono-era-name { font-family: var(--fn); font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.chrono-desc { font-family: var(--fn); font-size: 14px; font-weight: 300; font-style: italic; color: var(--ink-mid); line-height: 1.6; margin-bottom: 8px; }
+.chrono-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.chrono-tag { font-family: var(--fb); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-lt); border: 1px solid var(--rule-lt); padding: 2px 8px; }
+.chrono-item.locked .chrono-era-name, .chrono-item.locked .chrono-desc { opacity: .45; }

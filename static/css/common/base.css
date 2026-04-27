@@ -1,0 +1,17 @@
+:root {
+  --paper:#F6F0E2; --paper-warm:#EFE5CC; --paper-deep:#E2D3B4;
+  --ink:#16100A; --ink-mid:#3D2C1E; --ink-lt:#7A6050; --ink-faint:#B8A898;
+  --navy:#1C2B6B; --navy-deep:#111A4A; --navy-lt:#C0CCEC;
+  --terra:#B84F2C; --terra-lt:#D4724E;
+  --gold:#B8880E; --gold-lt:#D4A820; --gold-pale:#EDD070;
+  --rule:#C4B090; --rule-lt:#DDD0B8;
+  --fn:'Cormorant Garamond','Times New Roman',serif;
+  --fc:'Cormorant SC','Times New Roman',serif;
+  --fb:'Jost',system-ui,sans-serif;
+  --margin:clamp(24px,6vw,80px);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:var(--fn);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;}
+img{display:block;max-width:100%;}
+a{text-decoration:none;}

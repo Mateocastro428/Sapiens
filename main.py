@@ -34,13 +34,49 @@ def servir_html(ruta_relativa: str):
 def index():
     return servir_html("index.html")
 
+@app.get("/index.html")
+def index_html():
+    return servir_html("index.html")
+
 @app.get("/metodologia")
 def metodologia():
+    return servir_html("metodologia.html")
+
+@app.get("/metodologia.html")
+def metodologia_html():
     return servir_html("metodologia.html")
 
 @app.get("/registro")
 def registro():
     return servir_html("registro.html")
+
+@app.get("/registro.html")
+def registro_html():
+    return servir_html("registro.html")
+
+@app.get("/eras")
+def eras():
+    return servir_html("eras.html")
+
+@app.get("/eras.html")
+def eras_html():
+    return servir_html("eras.html")
+
+@app.get("/progreso")
+def progreso():
+    return servir_html("progreso.html")
+
+@app.get("/progreso.html")
+def progreso_html():
+    return servir_html("progreso.html")
+
+@app.get("/acerca")
+def acerca():
+    return servir_html("acerca.html")
+
+@app.get("/acerca.html")
+def acerca_html():
+    return servir_html("acerca.html")
 
 @app.get("/api")
 def api_status():
