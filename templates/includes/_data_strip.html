@@ -1,0 +1,10 @@
+<div class="data-strip">
+  <div class="data-strip-inner">
+    {% for stat in data_strip %}
+      <div class="ds-item">
+        <span class="ds-n">{{ stat.value }}</span>
+        <span class="ds-l">{{ stat.label }}</span>
+      </div>
+    {% endfor %}
+  </div>
+</div>

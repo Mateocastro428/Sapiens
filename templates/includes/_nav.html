@@ -1,0 +1,23 @@
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <a href="/">
+        <div class="nav-mark">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="6.5" r="3.8" stroke="#F6F0E2" stroke-width="1.3"/>
+            <path d="M2.5 16.5 Q5.5 11 9 12 Q12.5 13 15.5 16.5" stroke="#F6F0E2" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+            <path d="M1 17.5 Q9 14 17 17.5" stroke="#B8880E" stroke-width=".9" fill="none"/>
+          </svg>
+        </div>
+        <span class="nav-wordmark">SAPIENS</span>
+      </a>
+    </div>
+    <div class="nav-links">
+      <a href="/eras" class="{% if active_page == 'eras' %}active{% endif %}">Eras históricas</a>
+      <a href="/progreso" class="{% if active_page == 'progreso' %}active{% endif %}">Mi progreso</a>
+      <a href="/metodologia" class="{% if active_page == 'metodologia' %}active{% endif %}">Metodología</a>
+      <a href="/acerca" class="{% if active_page == 'acerca' %}active{% endif %}">Acerca de</a>
+    </div>
+    <a href="/registro" class="nav-cta {% if active_page == 'registro' %}active{% endif %}">Iniciar sesión</a>
+  </div>
+</nav>

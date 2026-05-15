@@ -1,0 +1,18 @@
+@import url("/static/css/css-metodologia/base.css");
+@import url("/static/css/common/nav.css");
+@import url("/static/css/css-metodologia/hero.css");
+@import url("/static/css/css-metodologia/demo-badge.css");
+@import url("/static/css/css-metodologia/data-strip.css");
+@import url("/static/css/css-metodologia/sections.css");
+@import url("/static/css/css-metodologia/phases.css");
+@import url("/static/css/css-metodologia/module-video.css");
+@import url("/static/css/css-metodologia/module-pdf.css");
+@import url("/static/css/css-metodologia/module-questions.css");
+@import url("/static/css/css-metodologia/xp-gamification.css");
+@import url("/static/css/css-metodologia/lesson-demo.css");
+@import url("/static/css/css-metodologia/badges.css");
+@import url("/static/css/css-metodologia/cta.css");
+@import url("/static/css/css-metodologia/footer.css");
+
+/* Nav override: match the nav background used by the main pages */
+.nav { background: var(--navy); }

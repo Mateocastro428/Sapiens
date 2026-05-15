@@ -1,0 +1,20 @@
+<section class="how-section">
+  <div class="how-inner">
+    <div class="how-text">
+      <div class="how-label">II · Mecánica</div>
+      <h2 class="how-title">¿Cómo funciona <em>Sapiens?</em></h2>
+      <p class="how-desc">Cuatro pasos para comenzar tu recorrido intelectual por la historia de la humanidad.</p>
+    </div>
+    <div class="steps-table">
+      {% for step in steps %}
+        <div class="step-row {{ 'step-accent-row' if step.accent }}">
+          <div class="step-num-cell"><span class="step-num">{{ step.number }}</span></div>
+          <div class="step-content">
+            <div class="step-title">{{ step.title }}</div>
+            <p class="step-desc">{{ step.description }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

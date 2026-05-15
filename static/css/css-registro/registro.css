@@ -1,0 +1,43 @@
+@import url("/static/css/css-registro/base.css");
+@import url("/static/css/css-registro/panel-left.css");
+@import url("/static/css/css-registro/form-layout.css");
+@import url("/static/css/css-registro/form-header.css");
+@import url("/static/css/css-registro/form-fields.css");
+@import url("/static/css/css-registro/form-divider.css");
+@import url("/static/css/css-registro/form-buttons.css");
+@import url("/static/css/css-registro/form-checkbox.css");
+@import url("/static/css/css-registro/form-submit.css");
+@import url("/static/css/css-registro/form-footer.css");
+@import url("/static/css/css-registro/form-tabs.css");
+
+/* ━━━━ SHELL PRINCIPAL ━━━━ */
+.auth-shell {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.panel-left {
+  height: 100%;
+  min-height: 100%;
+}
+
+.panel-content {
+  min-height: 100%;
+}
+
+@media (max-width: 900px) {
+  .auth-shell {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: 100vh;
+  }
+  .panel-left {
+    width: 100%;
+    min-height: 50vh;
+    height: auto;
+  }
+  .panel-right { min-height: auto; }
+}

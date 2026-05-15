@@ -61,10 +61,7 @@
 .eras-legend { display: flex; gap: 20px; align-items: center; flex-shrink: 0; }
 .legend-item { display: flex; align-items: center; gap: 6px; font-family: var(--fb); font-size: 10px; letter-spacing: .1em; color: var(--ink-lt); }
 .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
-
 .eras-full-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-
-/* Era cards */
 .era-card { background: var(--paper); border: 1px solid var(--rule); display: flex; flex-direction: column; transition: box-shadow .3s, transform .3s; }
 .era-card:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(22,16,10,.12); }
 .era-card.locked { opacity: .55; pointer-events: none; }
@@ -98,37 +95,7 @@
 .era-btn-gold:hover { background: var(--gold); color: var(--ink); }
 .era-btn-off { color: var(--ink-faint); border-color: var(--rule); cursor: not-allowed; }
 
-/* ━━━━ MAPA CRONOLÓGICO ━━━━ */
-.chrono-section { padding: 64px var(--margin); background: var(--paper); }
-.chrono-inner { max-width: 1280px; margin: 0 auto; }
-.chrono-header { margin-bottom: 44px; }
-.chrono-timeline {
-  position: relative;
-  padding-left: 40px;
+@media (max-width: 980px) {
+  .eras-full-grid { grid-template-columns: 1fr; }
+  .page-header { padding: 48px var(--margin) 48px; }
 }
-.chrono-spine {
-  position: absolute; left: 13px; top: 0; bottom: 0;
-  width: 1px; background: var(--rule);
-}
-.chrono-item {
-  position: relative; margin-bottom: 32px;
-  display: grid; grid-template-columns: 180px 1fr;
-  gap: 32px; align-items: start;
-}
-.chrono-dot {
-  position: absolute; left: -33px; top: 6px;
-  width: 12px; height: 12px; border-radius: 50%;
-  border: 2px solid var(--paper); flex-shrink: 0;
-}
-.chrono-item.locked .chrono-dot { background: var(--rule) !important; }
-.chrono-date {
-  font-family: var(--fn); font-size: 13px; font-weight: 300; font-style: italic;
-  color: var(--ink-lt); line-height: 1.5; padding-top: 4px;
-  text-align: right;
-}
-.chrono-content { border-left: 1px solid var(--rule-lt); padding-left: 24px; }
-.chrono-era-name { font-family: var(--fn); font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
-.chrono-desc { font-family: var(--fn); font-size: 14px; font-weight: 300; font-style: italic; color: var(--ink-mid); line-height: 1.6; margin-bottom: 8px; }
-.chrono-tags { display: flex; gap: 8px; flex-wrap: wrap; }
-.chrono-tag { font-family: var(--fb); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-lt); border: 1px solid var(--rule-lt); padding: 2px 8px; }
-.chrono-item.locked .chrono-era-name, .chrono-item.locked .chrono-desc { opacity: .45; }
