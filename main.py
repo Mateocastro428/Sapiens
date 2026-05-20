@@ -112,5 +112,17 @@ app.include_router(lecciones_router)
 app.include_router(inscripciones_router)
 app.include_router(usuarios_router)
 
-
+from app.domain.models.unidad import Unidad
+from app.domain.models.ejercicio import Ejercicio
+from app.domain.models.progreso import Progreso
+from app.domain.models.intento import Intento
+from app.domain.models.habilidad import Habilidad
+from app.domain.models.logro import Logro
+from app.domain.models.recompensa import Recompensa
+from app.domain.models.vida import Vida
+from app.domain.models.estado_sesion import EstadoSesion
+from app.domain.models.manejo_sesion import ManejoSesion
+from app.domain.models.foro import Foro
+from app.domain.models.tema import Tema
+from app.domain.models.respuesta import Respuesta
 Base.metadata.create_all(bind=engine)
