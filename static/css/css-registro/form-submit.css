@@ -42,7 +42,6 @@ body {
 
 /* ━━━━ PANEL IZQUIERDO — ilustración histórica ━━━━ */
 .panel-left {
-  width: 46%;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;

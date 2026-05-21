@@ -1,6 +1,5 @@
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   SAPIENS · Registro
-   Enciclopedia ilustrada del Renacimiento
+   SAPIENS · Base + Layout
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 :root {
@@ -28,14 +27,19 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 16px; }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+}
 
 body {
   font-family: var(--fn);
   background: var(--navy-deep);
   color: var(--ink);
   min-height: 100vh;
-  display: flex;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  /* ← SIN display:flex aquí, el auth-shell maneja el layout */
 }

@@ -35,3 +35,16 @@ htmlcov/
 
 # Mi aplicación (si generas algo)
 static/uploads/
+
+
+# Entorno virtual
+venv/
+ENV/
+
+# Caché de Python
+__pycache__/
+*.pyc
+
+# Base de datos local
+sapiens.db
+

@@ -1,0 +1,14 @@
+<section class="section-wrap">
+  <div class="section-inner">
+    <div class="sec-header">
+      <div class="sec-chapter">III · Propuesta académica</div>
+      <h2 class="sec-title">Aprendizaje que <em>avanza contigo</em></h2>
+      <p class="sec-lead">Rigor académico con la motivación del juego. Un método diseñado por historiadores para mentes curiosas.</p>
+    </div>
+    <div class="value-grid">
+      {% for item in values %}
+        {{ components.value_card(item) }}
+      {% endfor %}
+    </div>
+  </div>
+</section>

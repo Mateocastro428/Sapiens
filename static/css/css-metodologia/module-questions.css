@@ -49,12 +49,6 @@ button { cursor: pointer; }
 
 /* ━━━━ NAV ━━━━ */
 /* ━━━━ NAV ━━━━ */
-.nav {
-  background: linear-gradient(180deg, #0D1438 0%, #111A4A 100%);
-  padding: 0 var(--margin);
-  position: sticky; top: 0; z-index: 200;
-  box-shadow: 0 3px 0 var(--gold);
-}
 .nav-inner {
   max-width: 1280px; margin: 0 auto;
   height: 58px;
@@ -71,12 +65,6 @@ button { cursor: pointer; }
 .nav-mark {
   width: 32px; height: 32px; background: var(--terra);
   border-radius: 3px; display: flex; align-items: center; justify-content: center;
-}
-.nav-wordmark {
-  font-family: var(--fc); font-size: 17px; font-weight: 600;
-  letter-spacing: .32em;
-  background: linear-gradient(135deg, #F6F0E2 30%, #D4A820 70%, #F6F0E2 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .nav-links { display: flex; align-items: center; gap: 32px; }
 .nav-links a {

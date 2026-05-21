@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% import "macros/site_components.html" as components %}
+
+{% block title %}Sapiens · Historia gamificada por niveles{% endblock %}
+
+{% block page_styles %}
+<link rel="stylesheet" href="/static/css/css-index/index.css">
+{% endblock %}
+
+{% block content %}
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="masthead-text">
+      <div class="vol-tag">Historia · Civilización · Evolución intelectual</div>
+      <p class="masthead-kicker">Plataforma educativa gamificada</p>
+      <h1 class="masthead-h1">Descubre el origen <strong>de la humanidad,<br>nivel a nivel.</strong></h1>
+      <div class="masthead-rule">
+        <div class="masthead-rule-line"></div>
+        <div class="masthead-rule-diamond"></div>
+        <div class="masthead-rule-line"></div>
+      </div>
+      <p class="masthead-sub">Viaja desde la Prehistoria hasta la Edad Moderna. Cada era es un reto intelectual. Cada reto, un paso en tu evolución como pensador histórico.</p>
+      <div class="masthead-actions">
+        {{ components.button('Empieza tu viaje', '/registro', 'cta-gold', true) }}
+        {{ components.button('Ver eras históricas', '/eras', 'navy') }}
+      </div>
+      <div class="masthead-stats">
+        {% for stat in masthead_stats %}
+        <div class="mstat">
+          <span class="mstat-n">{{ stat.value }}</span>
+          <span class="mstat-l">{{ stat.label }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="masthead-divider"></div>
+    <div class="masthead-figure">
+      <img class="masthead-img" src="/static/img/evo.png" alt="Panteon Griego" />
+      <div class="masthead-veil"></div>
+      <div class="masthead-caption">
+        <div class="caption-era"><span class="caption-dot"></span>Era II · Edad Antigua</div>
+        <div class="caption-text">El Partenón, Acrópolis de Atenas, c. 432 a.C. — uno de los 72 retos históricos de Sapiens</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% include "includes/_data_strip.html" %}
+
+<section class="section-wrap-alt">
+  <div class="section-inner">
+    <div class="sec-header">
+      <div class="sec-chapter">I · Tu camino evolutivo</div>
+      <h2 class="sec-title">Eras <em>desbloqueables</em></h2>
+      <p class="sec-lead">Avanza en orden cronológico estricto. Cada era desbloquea la siguiente y amplía tu árbol del conocimiento histórico.</p>
+    </div>
+    <div class="eras-grid">
+      {% for era in eras %}
+        {{ components.era_card(era) }}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% include "includes/_how.html" %}
+{% include "includes/_value.html" %}
+{% include "includes/_cta.html" %}
+{% endblock %}

@@ -1,48 +1,8 @@
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   SAPIENS · Registro
-   Enciclopedia ilustrada del Renacimiento
+   SAPIENS · Panel Izquierdo
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-:root {
-  --paper:       #F6F0E2;
-  --paper-warm:  #EFE5CC;
-  --paper-deep:  #E2D3B4;
-  --ink:         #16100A;
-  --ink-mid:     #3D2C1E;
-  --ink-lt:      #7A6050;
-  --ink-faint:   #B8A898;
-  --navy:        #1C2B6B;
-  --navy-deep:   #111A4A;
-  --navy-lt:     #C0CCEC;
-  --terra:       #B84F2C;
-  --terra-lt:    #D4724E;
-  --gold:        #B8880E;
-  --gold-lt:     #D4A820;
-  --gold-pale:   #EDD070;
-  --rule:        #C4B090;
-  --rule-lt:     #DDD0B8;
-  --xp-green:    #2E7D4F;
-  --fn:          'Cormorant Garamond', 'Times New Roman', serif;
-  --fc:          'Cormorant SC', 'Times New Roman', serif;
-  --fb:          'Jost', system-ui, sans-serif;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 16px; }
-
-body {
-  font-family: var(--fn);
-  background: var(--navy-deep);
-  color: var(--ink);
-  min-height: 100vh;
-  display: flex;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-/* ━━━━ PANEL IZQUIERDO — ilustración histórica ━━━━ */
 .panel-left {
-  width: 46%;
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
@@ -51,9 +11,11 @@ body {
   flex-direction: column;
 }
 
-/* Imagen de fondo */
 .panel-bg {
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: 0;
+  top: 0;
+  bottom: 0;        /* ← asegura que llegue hasta abajo */
   background-image: url('../../img/stonehenge.jpg');
   background-size: cover;
   background-position: center 30%;
@@ -63,7 +25,6 @@ body {
 }
 .panel-bg:hover { transform: scale(1.0); }
 
-/* Capas de velo */
 .panel-veil-top {
   position: absolute; inset: 0;
   background: linear-gradient(
@@ -81,7 +42,6 @@ body {
   z-index: 2;
 }
 
-/* Marco interior estilo enciclopedia */
 .panel-frame {
   position: absolute; inset: 20px; z-index: 3;
   border: 1px solid rgba(196,176,144,.22);
@@ -93,14 +53,14 @@ body {
   border: 1px solid rgba(196,176,144,.1);
 }
 
-/* Contenido del panel izquierdo */
 .panel-content {
   position: relative; z-index: 4;
   display: flex; flex-direction: column;
-  height: 100%; padding: 40px 44px;
+  flex: 1;           /* ← cambia height:100% por flex:1 */
+  min-height: 100vh; /* ← agrega esto */
+  padding: 40px 44px;
 }
 
-/* Logo */
 .panel-logo {
   display: flex; align-items: center; gap: 12px;
   margin-bottom: auto;
@@ -115,10 +75,8 @@ body {
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 
-/* Cita histórica central */
-.panel-quote-wrap {
-  margin: auto 0;
-}
+.panel-quote-wrap { margin: auto 0; }
+
 .panel-ornament {
   display: flex; align-items: center; gap: 14px; margin-bottom: 28px;
 }
@@ -146,7 +104,6 @@ body {
   color: rgba(192,204,236,.55);
 }
 
-/* Estadísticas inferiores */
 .panel-stats {
   display: flex; gap: 0; margin-top: 48px;
   border-top: 1px solid rgba(196,176,144,.2);
@@ -166,4 +123,11 @@ body {
 .ps-l {
   font-family: var(--fb); font-size: 9px; font-weight: 300;
   letter-spacing: .16em; text-transform: uppercase; color: rgba(192,204,236,.45);
+}
+.panel-veil-top,
+.panel-veil-side {
+  position: absolute;
+  inset: 0;
+  top: 0;
+  bottom: 0;   /* ← asegura cobertura completa */
 }

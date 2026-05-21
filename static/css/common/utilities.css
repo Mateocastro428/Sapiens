@@ -1,0 +1,40 @@
+:root {
+  --border-radius: 6px;
+  --card-gap: 24px;
+  --text-quiet: rgba(22, 16, 10, .6);
+}
+
+.grid-2 { display: grid; gap: 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-3 { display: grid; gap: 24px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-4 { display: grid; gap: 24px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.text-uppercase { text-transform: uppercase; letter-spacing: .16em; }
+.text-muted { color: var(--ink-mid); }
+.text-small { font-size: 12px; }
+
+.btn { display: inline-flex; align-items: center; gap: 10px; border-radius: 2px; border: none; font-family: var(--fb); text-decoration: none; transition: transform .15s, background .2s; cursor: pointer; }
+.btn svg { display: block; }
+.btn-primary { padding: 13px 32px; background: var(--navy); color: var(--paper); font-weight: 500; }
+.btn-primary:hover { background: var(--navy-deep); transform: translateY(-1px); }
+.btn-secondary { padding: 12px 24px; background: transparent; color: var(--ink-mid); font-weight: 400; }
+.btn-secondary:hover { color: var(--ink); }
+.btn-gold { padding: 14px 36px; background: var(--gold); color: var(--ink); font-weight: 500; }
+.btn-gold:hover { background: var(--gold-lt); transform: translateY(-1px); }
+.btn-disabled { opacity: .6; cursor: not-allowed; }
+
+.card { background: var(--paper); border: 1px solid var(--rule); border-radius: var(--border-radius); overflow: hidden; box-shadow: 0 8px 30px rgba(22,16,10,.04); }
+.card-body { padding: 28px; }
+.card-title { font-family: var(--fn); font-size: 22px; font-weight: 600; color: var(--ink); line-height: 1.2; margin-bottom: 14px; }
+.card-text { font-family: var(--fn); font-size: 15px; font-weight: 300; color: var(--ink-mid); line-height: 1.75; }
+
+.media-figure { position: relative; overflow: hidden; background: var(--paper-deep); }
+.media-figure img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.media-frame { position: absolute; inset: 8px; border: 1px solid rgba(196,176,144,.3); pointer-events: none; }
+
+.section-wrap, .section-wrap-alt, .how-section, .cta-section { padding: 80px var(--margin); }
+.section-inner { max-width: 1280px; margin: 0 auto; }
+.section-wrap-alt { background: var(--paper-warm); border-bottom: 1px solid var(--rule); }
+
+@media (max-width: 940px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}

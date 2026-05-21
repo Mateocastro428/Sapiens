@@ -1,0 +1,86 @@
+{% macro button(text, href=None, variant='primary', icon=False, disabled=False) %}
+  {% set classes = ['btn', 'btn-' ~ variant] %}
+  {% if disabled %}
+    <button class="{{ classes | join(' ') }}" disabled>{{ text }}</button>
+  {% elif href %}
+    <a href="{{ href }}" class="{{ classes | join(' ') }}">
+      {{ text }}
+      {% if icon %}
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 7h10M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      {% endif %}
+    </a>
+  {% else %}
+    <button class="{{ classes | join(' ') }}">
+      {{ text }}
+      {% if icon %}
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 7h10M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      {% endif %}
+    </button>
+  {% endif %}
+{% endmacro %}
+
+{% macro era_card(era) %}
+  <div class="era-card {{ era.locked_class }}">
+    <div class="era-figure {{ era.figure_class }}">
+      {% if era.image %}
+        <img src="{{ era.image }}" alt="{{ era.alt_text }}" onerror="this.parentElement.style.background='{{ era.error_fill }}'" />
+      {% else %}
+        <div class="era-figure-empty">
+          <div class="era-lock-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="8" y="19" width="24" height="17" rx="2" stroke="#A89878" stroke-width="1.4"/>
+              <path d="M14 19 Q14 9 20 9 Q26 9 26 19" stroke="#A89878" stroke-width="1.4" fill="none"/>
+              <circle cx="20" cy="27.5" r="3.5" fill="#A89878"/>
+            </svg>
+            <span class="era-lock-note">Completa Era II para acceder</span>
+          </div>
+        </div>
+      {% endif %}
+      <div class="era-figure-frame"></div>
+      <div class="era-fig-num">{{ era.number }}</div>
+    </div>
+    <div class="era-figcaption"><p>{{ era.caption }}</p></div>
+    <div class="era-body">
+      <div class="era-status">
+        <span class="era-status-dot {{ era.status_class }}"></span>
+        {{ era.status_label }}
+      </div>
+      <div class="era-title">{{ era.title }}</div>
+      <p class="era-body-text">{{ era.description }}</p>
+      <div class="prog-area">
+        <div class="prog-track"><div class="prog-fill {{ era.progress_class }}" style="width:{{ era.progress }}%"></div></div>
+        <span class="prog-text {{ era.progress_text_class }}">{{ era.progress_label }}</span>
+      </div>
+      {{ button(era.button_label, era.button_url, variant=era.button_variant, disabled=era.locked) }}
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro step_row(step) %}
+  <div class="step-row {{ 'step-accent-row' if step.accent }}">
+    <div class="step-num-cell"><span class="step-num">{{ step.number }}</span></div>
+    <div class="step-content">
+      <div class="step-title">{{ step.title }}</div>
+      <p class="step-desc">{{ step.description }}</p>
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro value_card(item) %}
+  <div class="value-card">
+    <div class="value-figure {{ item.figure_class | default('') }}">
+      <img src="{{ item.image }}" alt="{{ item.alt_text }}" onerror="this.parentElement.style.background='{{ item.error_fill }}'" />
+      <div class="value-figure-frame"></div>
+    </div>
+    <div class="value-accent-bar {{ item.accent_class }}"></div>
+    <div class="value-fig-caption"><p>{{ item.caption }}</p></div>
+    <div class="value-body">
+      <div class="value-title">{{ item.title }}</div>
+      <p class="value-text">{{ item.description }}</p>
+    </div>
+  </div>
+{% endmacro %}

@@ -72,12 +72,6 @@ button { cursor: pointer; }
   width: 32px; height: 32px; background: var(--terra);
   border-radius: 3px; display: flex; align-items: center; justify-content: center;
 }
-.nav-wordmark {
-  font-family: var(--fc); font-size: 17px; font-weight: 600;
-  letter-spacing: .32em;
-  background: linear-gradient(135deg, #F6F0E2 30%, #D4A820 70%, #F6F0E2 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
 .nav-links { display: flex; align-items: center; gap: 32px; }
 .nav-links a {
   font-family: var(--fb); font-size: 12px; font-weight: 400;
