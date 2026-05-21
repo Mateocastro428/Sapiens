@@ -1,8 +1,6 @@
-from fastapi import APIRouter, Depends, Form
-from sqlalchemy.orm import Session
-from app.infrastructure.database import get_db
-from app.domain.models.course import Course
-from app.infrastructure.seguridad import obtener_usuario_actual
+from fastapi import APIRouter, Depends, Form, HTTPException, status
+from app.interfaces.dependencies import get_course_service, get_current_user
+from app.application.services.course_service import CourseService
 
 router = APIRouter(prefix="/cursos", tags=["Cursos"])
 
@@ -12,42 +10,32 @@ router = APIRouter(prefix="/cursos", tags=["Cursos"])
 def crear_curso(
     title: str = Form(...),
     description: str = Form(...),
-    db: Session = Depends(get_db),
-    usuario=Depends(obtener_usuario_actual)  # 🔐 protegido
+    service: CourseService = Depends(get_course_service),
+    usuario=Depends(get_current_user)
 ):
-    nuevo_curso = Course(
-        title=title,
-        description=description
-    )
-
-    db.add(nuevo_curso)
-    db.commit()
-    db.refresh(nuevo_curso)
-
-    return {"mensaje": "Curso creado", "curso": nuevo_curso}
+    curso = service.create_course(title, description)
+    return {"mensaje": "Curso creado", "curso": curso}
 
 
 # 🔹 LISTAR CURSOS
 @router.get("/")
 def listar_cursos(
-    db: Session = Depends(get_db),
-    usuario=Depends(obtener_usuario_actual)
+    service: CourseService = Depends(get_course_service),
+    usuario=Depends(get_current_user)
 ):
-    return db.query(Course).all()
+    return service.list_courses()
 
 
 # 🔹 OBTENER CURSO
 @router.get("/{curso_id}")
 def obtener_curso(
     curso_id: int,
-    db: Session = Depends(get_db),
-    usuario=Depends(obtener_usuario_actual)
+    service: CourseService = Depends(get_course_service),
+    usuario=Depends(get_current_user)
 ):
-    curso = db.query(Course).filter(Course.id == curso_id).first()
-
+    curso = service.get_course(curso_id)
     if not curso:
-        return {"error": "Curso no encontrado"}
-
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Curso no encontrado")
     return curso
 
 
@@ -57,19 +45,12 @@ def actualizar_curso(
     curso_id: int,
     title: str = Form(...),
     description: str = Form(...),
-    db: Session = Depends(get_db),
-    usuario=Depends(obtener_usuario_actual)
+    service: CourseService = Depends(get_course_service),
+    usuario=Depends(get_current_user)
 ):
-    curso = db.query(Course).filter(Course.id == curso_id).first()
-
+    curso = service.update_course(curso_id, title, description)
     if not curso:
-        return {"error": "Curso no encontrado"}
-
-    curso.title = title
-    curso.description = description
-
-    db.commit()
-
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Curso no encontrado")
     return {"mensaje": "Curso actualizado"}
 
 
@@ -77,15 +58,10 @@ def actualizar_curso(
 @router.delete("/{curso_id}")
 def eliminar_curso(
     curso_id: int,
-    db: Session = Depends(get_db),
-    usuario=Depends(obtener_usuario_actual)
+    service: CourseService = Depends(get_course_service),
+    usuario=Depends(get_current_user)
 ):
-    curso = db.query(Course).filter(Course.id == curso_id).first()
-
-    if not curso:
-        return {"error": "Curso no encontrado"}
-
-    db.delete(curso)
-    db.commit()
-
+    eliminado = service.delete_course(curso_id)
+    if not eliminado:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Curso no encontrado")
     return {"mensaje": "Curso eliminado"}

@@ -1,54 +1,35 @@
-from fastapi import APIRouter, Form, Depends
-from sqlalchemy.orm import Session
-from app.infrastructure.database import get_db
+from fastapi import APIRouter, Form, Depends, HTTPException, status
+from app.interfaces.dependencies import get_user_service, get_current_user
+from app.application.services.user_service import UserService
 from app.domain.models.user import User
-from app.application.user_service import login_usuario
-from passlib.context import CryptContext
-from app.infrastructure.seguridad import crear_token, obtener_usuario_actual
-
-ph = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 router = APIRouter(prefix="/usuarios", tags=["Usuarios"])
 
 
-# 🔹 REGISTRO
 @router.post("/registro")
 def registrar(
     username: str = Form(...),
     email: str = Form(...),
     password: str = Form(...),
-    db: Session = Depends(get_db)
+    service: UserService = Depends(get_user_service)
 ):
-    password_hash = ph.hash(password)
+    existing = service.repository.find_by_email(email)
+    if existing:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="El correo ya está registrado")
 
-    nuevo_usuario = User(
-        username=username,
-        email=email,
-        password=password_hash
-    )
-
-    db.add(nuevo_usuario)
-    db.commit()
-    db.refresh(nuevo_usuario)
-
+    service.register_user(username, email, password)
     return {"mensaje": "Usuario registrado"}
 
 
-# 🔹 LOGIN
 @router.post("/inicio-sesion")
 def inicio_sesion(
     email: str = Form(...),
     password: str = Form(...),
-    db: Session = Depends(get_db)
+    service: UserService = Depends(get_user_service)
 ):
-    usuario = login_usuario(db, email, password)
-
-    if not usuario:
-        return {"error": "Credenciales incorrectas"}
-
-    token = crear_token({
-        "sub": usuario.email
-    })
+    token = service.authenticate_user(email, password)
+    if not token:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Credenciales incorrectas")
 
     return {
         "access_token": token,
@@ -56,65 +37,39 @@ def inicio_sesion(
     }
 
 
-# 🔹 RUTA PROTEGIDA
 @router.get("/perfil")
-def perfil(usuario=Depends(obtener_usuario_actual)):
-    return {
-        "mensaje": "Acceso autorizado",
-        "usuario": usuario.username,
-        "email": usuario.email
-    }
-# 🔹 LISTAR USUARIOS
+def perfil(usuario: User = Depends(get_current_user), service: UserService = Depends(get_user_service)):
+    return service.profile(usuario)
+
+
 @router.get("/")
-def listar_usuarios(db: Session = Depends(get_db)):
-    return db.query(User).all()
+def listar_usuarios(service: UserService = Depends(get_user_service)):
+    return service.list_users()
 
 
-# 🔹 OBTENER USUARIO POR ID
 @router.get("/{user_id}")
-def obtener_usuario(user_id: int, db: Session = Depends(get_db)):
-    usuario = db.query(User).filter(User.id == user_id).first()
-    
+def obtener_usuario(user_id: int, service: UserService = Depends(get_user_service)):
+    usuario = service.get_user_by_id(user_id)
     if not usuario:
-        return {"error": "Usuario no encontrado"}
-    
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Usuario no encontrado")
     return usuario
 
 
-# 🔹 ACTUALIZAR USUARIO
 @router.put("/{user_id}")
 def actualizar_usuario(
     user_id: int,
     username: str = Form(...),
-    db: Session = Depends(get_db)
+    service: UserService = Depends(get_user_service)
 ):
-    usuario = db.query(User).filter(User.id == user_id).first()
-
+    usuario = service.update_username(user_id, username)
     if not usuario:
-        return {"error": "Usuario no encontrado"}
-
-    usuario.username = username
-    db.commit()
-
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Usuario no encontrado")
     return {"mensaje": "Usuario actualizado"}
 
 
-# 🔹 ELIMINAR USUARIO
 @router.delete("/{user_id}")
-def eliminar_usuario(user_id: int, db: Session = Depends(get_db)):
-    usuario = db.query(User).filter(User.id == user_id).first()
-
-    if not usuario:
-        return {"error": "Usuario no encontrado"}
-
-    db.delete(usuario)
-    db.commit()
-
+def eliminar_usuario(user_id: int, service: UserService = Depends(get_user_service)):
+    resultado = service.delete_user(user_id)
+    if not resultado:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Usuario no encontrado")
     return {"mensaje": "Usuario eliminado"}
-
-@router.get("/")
-def listar_usuarios(
-    usuario=Depends(obtener_usuario_actual),
-    db: Session = Depends(get_db)
-):
-    return db.query(User).all()

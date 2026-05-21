@@ -1,8 +1,6 @@
-from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
-from app.infrastructure.database import get_db
-from app.domain.models.inscripcion import Inscripcion
-from app.infrastructure.seguridad import obtener_usuario_actual
+from fastapi import APIRouter, Depends, HTTPException, status
+from app.interfaces.dependencies import get_enrollment_service, get_current_user
+from app.application.services.enrollment_service import EnrollmentService
 
 router = APIRouter(prefix="/inscripciones", tags=["Inscripciones"])
 
@@ -10,16 +8,11 @@ router = APIRouter(prefix="/inscripciones", tags=["Inscripciones"])
 @router.post("/{curso_id}")
 def inscribirse(
     curso_id: int,
-    db: Session = Depends(get_db),
-    usuario=Depends(obtener_usuario_actual)
+    service: EnrollmentService = Depends(get_enrollment_service),
+    usuario=Depends(get_current_user)
 ):
-    nueva = Inscripcion(
-        usuario_id=usuario.id,
-        curso_id=curso_id
-    )
-
-    db.add(nueva)
-    db.commit()
-    db.refresh(nueva)
-
+    try:
+        service.enroll(usuario.id, curso_id)
+    except ValueError as exc:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc))
     return {"mensaje": "Inscrito correctamente"}

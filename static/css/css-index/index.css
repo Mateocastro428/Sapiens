@@ -15,7 +15,7 @@
   .masthead-text { padding: 64px clamp(24px, 6vw, 80px) 64px clamp(24px, 4vw, 80px); }
   .masthead-h1 { font-size: clamp(40px, 5vw, 60px); }
 }
-.masthead-divider { position: absolute; top: 0; left: 30%; transform: translateX(-50%); bottom: 0; width: 1px; background: var(--rule); z-index: 2; }
+.masthead-divider { position: absolute; top: 0; left: 40%; transform: translateX(-50%); bottom: 0; width: 1px; background: var(--rule); z-index: 2; }
 .vol-tag { font-family: var(--fb); font-size: 10px; font-weight: 400; letter-spacing: .2em; text-transform: uppercase; color: var(--ink-lt); margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
 .vol-tag::after { content: ''; flex: 1; height: 1px; background: var(--rule-lt); }
 .masthead-kicker { font-family: var(--fn); font-size: 13px; font-weight: 400; font-style: italic; color: var(--terra); letter-spacing: .06em; margin-bottom: 8px; }
