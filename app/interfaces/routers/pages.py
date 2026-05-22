@@ -46,6 +46,18 @@ def metodologia_html(request: Request):
     context.update(get_page_context("metodologia"))
     return templates.TemplateResponse("metodologia.html", context)
 
+@router.get("/acerca")
+def acerca(request: Request):
+    context = {"request": request}
+    context.update(get_page_context("acerca"))
+    return templates.TemplateResponse("acerca.html", context)
+
+@router.get("/acerca.html")
+def acerca_html(request: Request):
+    context = {"request": request}
+    context.update(get_page_context("acerca"))
+    return templates.TemplateResponse("acerca.html", context)
+
 @router.get("/registro")
 def registro(request: Request):
     context = {"request": request}
