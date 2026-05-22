@@ -14,6 +14,9 @@
       <div>
         <div class="ph-vol">Panel personal · Tu evolución histórica</div>
         <h1 class="ph-title">Mi <em>progreso</em><br>en Sapiens</h1>
+        {% if usuario %}
+        <p class="ph-welcome">Hola, {{ usuario.username }}. Bienvenido de nuevo.</p>
+        {% endif %}
         <p class="ph-lead">Llevas 13 retos completados. Estás en la Era II y avanzas con paso firme hacia el dominio de la historia antigua.</p>
       </div>
       <div class="ph-quick-stats">

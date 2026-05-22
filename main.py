@@ -1,15 +1,20 @@
-from fastapi import FastAPI, Request
+from typing import Optional
+from fastapi import FastAPI, Request, Depends, Cookie, HTTPException, status
+from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from sqlalchemy.orm import Session
 import os
 
 from app.interfaces.routers.usuarios import router as usuarios_router
 from app.interfaces.routers.course import router as cursos_router
 from app.interfaces.routers.lecciones import router as lecciones_router
 from app.interfaces.routers.inscripciones import router as inscripciones_router
+from app.interfaces.routers.auth import router as auth_router
 from app.application.page_service import get_index_context, get_page_context
-
-from app.infrastructure.database import Base, engine
+from app.application.factories.service_factory import ServiceFactory
+from app.infrastructure.database import Base, engine, get_db
+from app.infrastructure.repositories.sqlalchemy_user_repository import SqlAlchemyUserRepository
 
 app = FastAPI(title="Sapiens API")
 
@@ -79,14 +84,40 @@ def eras_html(request: Request):
     return templates.TemplateResponse("eras.html", context)
 
 @app.get("/progreso")
-def progreso(request: Request):
-    context = {"request": request}
+def progreso(
+    request: Request,
+    access_token: Optional[str] = Cookie(None),
+    db: Session = Depends(get_db)
+):
+    if not access_token:
+        return RedirectResponse(url="/registro", status_code=status.HTTP_303_SEE_OTHER)
+
+    repository = SqlAlchemyUserRepository(db)
+    try:
+        usuario = ServiceFactory.auth_strategy().get_current_user(repository, access_token)
+    except HTTPException:
+        return RedirectResponse(url="/registro?error=credenciales", status_code=status.HTTP_303_SEE_OTHER)
+
+    context = {"request": request, "usuario": usuario}
     context.update(get_page_context("progreso"))
     return templates.TemplateResponse("progreso.html", context)
 
 @app.get("/progreso.html")
-def progreso_html(request: Request):
-    context = {"request": request}
+def progreso_html(
+    request: Request,
+    access_token: Optional[str] = Cookie(None),
+    db: Session = Depends(get_db)
+):
+    if not access_token:
+        return RedirectResponse(url="/registro", status_code=status.HTTP_303_SEE_OTHER)
+
+    repository = SqlAlchemyUserRepository(db)
+    try:
+        usuario = ServiceFactory.auth_strategy().get_current_user(repository, access_token)
+    except HTTPException:
+        return RedirectResponse(url="/registro?error=credenciales", status_code=status.HTTP_303_SEE_OTHER)
+
+    context = {"request": request, "usuario": usuario}
     context.update(get_page_context("progreso"))
     return templates.TemplateResponse("progreso.html", context)
 
@@ -111,6 +142,7 @@ app.include_router(cursos_router)
 app.include_router(lecciones_router)
 app.include_router(inscripciones_router)
 app.include_router(usuarios_router)
+app.include_router(auth_router)
 
 from app.domain.models.unidad import Unidad
 from app.domain.models.ejercicio import Ejercicio

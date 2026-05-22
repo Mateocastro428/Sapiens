@@ -1,4 +1,5 @@
-from fastapi import Depends
+from typing import Optional
+from fastapi import Cookie, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.infrastructure.database import get_db
 from app.application.factories.service_factory import ServiceFactory
@@ -21,3 +22,14 @@ def get_enrollment_service(db: Session = Depends(get_db)):
 def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
     repository = SqlAlchemyUserRepository(db)
     return ServiceFactory.auth_strategy().get_current_user(repository, token)
+
+
+def get_current_user_cookie(
+    access_token: Optional[str] = Cookie(None),
+    db: Session = Depends(get_db)
+):
+    if not access_token:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Autenticación requerida")
+
+    repository = SqlAlchemyUserRepository(db)
+    return ServiceFactory.auth_strategy().get_current_user(repository, access_token)
