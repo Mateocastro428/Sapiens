@@ -1,3 +1,8 @@
+import os
+import sys
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -88,3 +93,7 @@ def test_course_and_enrollment_service(session):
 
     with pytest.raises(ValueError):
         enrollment_service.enroll(usuario_id=1, curso_id=999)
+
+
+if __name__ == "__main__":
+    raise SystemExit(pytest.main([__file__]))

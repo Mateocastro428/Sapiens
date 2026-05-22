@@ -1,15 +1,9 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from jose import jwt, JWTError
 from fastapi import HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
-from sqlalchemy.orm import Session
 from passlib.context import CryptContext
 from app.domain.models.user import User
-from datetime import datetime, timedelta
-from jose import jwt, JWTError
-from fastapi import HTTPException, status
-from fastapi.security import OAuth2PasswordBearer
-from passlib.context import CryptContext
 from app.domain.ports.user_repository import UserRepository
 from app.infrastructure.auth.strategy import AuthStrategy
 
@@ -30,7 +24,7 @@ class JWTAuthStrategy(AuthStrategy):
         return ph.verify(plain_password, hashed_password)
 
     def create_token(self, subject: str) -> str:
-        expire = datetime.utcnow() + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+        expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
         payload = {"sub": subject, "exp": expire}
         return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
 

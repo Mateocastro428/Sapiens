@@ -21,10 +21,15 @@ def import_model_file(path):
 
 
 def main():
-    pattern = os.path.join(MODELS_DIR, "*.py")
-    files = [p for p in glob.glob(pattern) if not p.endswith("__init__.py")]
+    files = []
+    for root, _, filenames in os.walk(MODELS_DIR):
+        for filename in filenames:
+            if filename.endswith(".py") and filename != "__init__.py":
+                files.append(os.path.join(root, filename))
+
     for f in files:
         import_model_file(f)
+
     Base.metadata.create_all(bind=engine)
     inspector = inspect(engine)
     tables = inspector.get_table_names()
