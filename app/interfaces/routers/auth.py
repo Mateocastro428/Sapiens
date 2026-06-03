@@ -49,6 +49,6 @@ def iniciar_sesion(
 
 @router.post("/logout")
 def cerrar_sesion():
-    response = RedirectResponse(url="/registro", status_code=status.HTTP_303_SEE_OTHER)
+    response = RedirectResponse(url="/", status_code=status.HTTP_303_SEE_OTHER)
     response.delete_cookie("access_token")
     return response

@@ -18,6 +18,21 @@
       <a href="/metodologia" class="{% if active_page == 'metodologia' %}active{% endif %}">Metodología</a>
       <a href="/acerca" class="{% if active_page == 'acerca' %}active{% endif %}">Acerca de</a>
     </div>
+    {% if usuario %}
+    <div class="nav-user-menu">
+      <button type="button" class="user-menu-button">
+        Mi perfil
+        <span class="user-menu-caret">▾</span>
+      </button>
+      <div class="user-menu-panel">
+        <a href="/progreso" class="user-menu-link">Mi perfil</a>
+        <form method="post" action="/logout" class="user-menu-form">
+          <button type="submit" class="user-menu-link user-menu-logout">Cerrar sesión</button>
+        </form>
+      </div>
+    </div>
+    {% else %}
     <a href="/registro" class="nav-cta {% if active_page == 'registro' %}active{% endif %}">Iniciar sesión</a>
+    {% endif %}
   </div>
 </nav>
