@@ -112,3 +112,6 @@ Esta aplicación FastAPI puede desplegarse directamente en Railway usando el `Pr
 
 - Por defecto la app usa SQLite (`sqlite:///./sapiens.db`) si `DATABASE_URL` no está configurada.
 - Para un entorno de producción real en Railway, es recomendable usar PostgreSQL y configurar `DATABASE_URL` con la cadena de conexión del addon.
+
+### enlace
+sapiens-production-a996.up.railway.app
