@@ -20,6 +20,9 @@ def registrar_usuario(
     existing = service.repository.find_by_email(email)
     if existing:
         return RedirectResponse(url="/registro?error=correo_existe", status_code=status.HTTP_303_SEE_OTHER)
+    username = f"{nombre} {apellido}".strip()
+    if len(password or "") < 8:
+        return RedirectResponse(url="/registro?error=pass_corta", status_code=status.HTTP_303_SEE_OTHER)
 
     username = f"{nombre} {apellido}".strip()
     service.register_user(username=username, email=email, password=password)

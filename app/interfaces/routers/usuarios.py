@@ -13,6 +13,9 @@ def registrar(
     password: str = Form(...),
     service: UserService = Depends(get_user_service)
 ):
+    if len(password or "") < 8:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="La contraseña debe tener al menos 8 caracteres")
+
     existing = service.repository.find_by_email(email)
     if existing:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="El correo ya está registrado")
