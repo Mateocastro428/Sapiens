@@ -35,26 +35,74 @@ def index_html(request: Request):
     return templates.TemplateResponse("index.html", context)
 
 @router.get("/metodologia")
-def metodologia(request: Request):
-    context = {"request": request}
+def metodologia(
+    request: Request,
+    access_token: Optional[str] = Cookie(None),
+    db=Depends(get_db)
+):
+    usuario = None
+    if access_token:
+        repository = SqlAlchemyUserRepository(db)
+        try:
+            usuario = ServiceFactory.auth_strategy().get_current_user(repository, access_token)
+        except HTTPException:
+            pass
+    
+    context = {"request": request, "usuario": usuario}
     context.update(get_page_context("metodologia"))
     return templates.TemplateResponse("metodologia.html", context)
 
 @router.get("/metodologia.html")
-def metodologia_html(request: Request):
-    context = {"request": request}
+def metodologia_html(
+    request: Request,
+    access_token: Optional[str] = Cookie(None),
+    db=Depends(get_db)
+):
+    usuario = None
+    if access_token:
+        repository = SqlAlchemyUserRepository(db)
+        try:
+            usuario = ServiceFactory.auth_strategy().get_current_user(repository, access_token)
+        except HTTPException:
+            pass
+    
+    context = {"request": request, "usuario": usuario}
     context.update(get_page_context("metodologia"))
     return templates.TemplateResponse("metodologia.html", context)
 
 @router.get("/acerca")
-def acerca(request: Request):
-    context = {"request": request}
+def acerca(
+    request: Request,
+    access_token: Optional[str] = Cookie(None),
+    db=Depends(get_db)
+):
+    usuario = None
+    if access_token:
+        repository = SqlAlchemyUserRepository(db)
+        try:
+            usuario = ServiceFactory.auth_strategy().get_current_user(repository, access_token)
+        except HTTPException:
+            pass
+    
+    context = {"request": request, "usuario": usuario}
     context.update(get_page_context("acerca"))
     return templates.TemplateResponse("acerca.html", context)
 
 @router.get("/acerca.html")
-def acerca_html(request: Request):
-    context = {"request": request}
+def acerca_html(
+    request: Request,
+    access_token: Optional[str] = Cookie(None),
+    db=Depends(get_db)
+):
+    usuario = None
+    if access_token:
+        repository = SqlAlchemyUserRepository(db)
+        try:
+            usuario = ServiceFactory.auth_strategy().get_current_user(repository, access_token)
+        except HTTPException:
+            pass
+    
+    context = {"request": request, "usuario": usuario}
     context.update(get_page_context("acerca"))
     return templates.TemplateResponse("acerca.html", context)
 
@@ -71,14 +119,38 @@ def registro_html(request: Request):
     return templates.TemplateResponse("registro.html", context)
 
 @router.get("/eras")
-def eras(request: Request):
-    context = {"request": request}
+def eras(
+    request: Request,
+    access_token: Optional[str] = Cookie(None),
+    db=Depends(get_db)
+):
+    usuario = None
+    if access_token:
+        repository = SqlAlchemyUserRepository(db)
+        try:
+            usuario = ServiceFactory.auth_strategy().get_current_user(repository, access_token)
+        except HTTPException:
+            pass
+    
+    context = {"request": request, "usuario": usuario}
     context.update(get_page_context("eras"))
     return templates.TemplateResponse("eras.html", context)
 
 @router.get("/eras.html")
-def eras_html(request: Request):
-    context = {"request": request}
+def eras_html(
+    request: Request,
+    access_token: Optional[str] = Cookie(None),
+    db=Depends(get_db)
+):
+    usuario = None
+    if access_token:
+        repository = SqlAlchemyUserRepository(db)
+        try:
+            usuario = ServiceFactory.auth_strategy().get_current_user(repository, access_token)
+        except HTTPException:
+            pass
+    
+    context = {"request": request, "usuario": usuario}
     context.update(get_page_context("eras"))
     return templates.TemplateResponse("eras.html", context)
 
